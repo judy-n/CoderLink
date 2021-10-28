@@ -3,7 +3,7 @@ import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import Profile from './views/profilePage/index';
-import Home from './views/homePage/homePage';
+import Home from './views/Home';
 
 class App extends React.Component {
 
