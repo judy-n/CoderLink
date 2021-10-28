@@ -6,15 +6,22 @@ import Profile from './views/profilePage/index';
 import Home from './views/homePage/homePage';
 
 class App extends React.Component {
+
+
+  state = {
+    username: "judy-n"
+  }
   render() {
     return(
       <div>
         <BrowserRouter>
+        <Switch>
         <Route exact path='/' render={() => 
                             (<Home/>)}/>
-            <Route exact path='/profile' render={() => 
-                            (<Profile appState={this.state}/>)}/>
-        </BrowserRouter>
+        <Route exact path='/profile' render={() => 
+                            (<Profile username={this.state.username}/>)}/>
+        </Switch>
+       </BrowserRouter>
       </div>
     );
   }
