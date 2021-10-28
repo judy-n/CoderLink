@@ -1,0 +1,51 @@
+body {
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  width: 800px;
+  background-color: rgb(199, 199, 199);
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+}
+
+.content {
+  font-size: small;
+  font-weight: normal;
+}
+
+.badge {
+  font-size: small;
+  font-weight: normal;
+  padding: 5px;
+  border: 3px solid blue;
+  border-radius: 15px;
+  margin: 2px;
+}
+
+.about-btn {
+  padding: 5px;
+  border: 1px solid green;
+  color: green;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.green {
+  border-color: green;
+  color: green;
+}
+
+.blue {
+  border-color: blue;
+  color: blue;
+}
