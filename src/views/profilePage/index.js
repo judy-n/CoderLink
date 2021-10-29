@@ -24,7 +24,7 @@ class Profile extends React.Component {
                 <h3>Name: <span className="content">{this.state.name}</span></h3>
                 <h3>Bio: <span className="content">{this.state.bio}</span></h3>
                 <h3>Institution: <span className="content">{this.state.institution}</span></h3>
-                <h3>Skills: {this.state.skills.map(skill => <span className="badge">{skill}</span>)}</h3>
+                <h3>Skills: {this.state.skills.map((skill, i) => <span className="badge" key={i}>{skill}</span>)}</h3>
                 <div className="about-buttons">
                   <button onClick={() => {}} className="about-btn blue">Connect</button>
                   <button onClick={() => {}} className="about-btn green">Portfolio</button>

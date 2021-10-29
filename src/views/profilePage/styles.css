@@ -5,21 +5,23 @@ body {
 
 .card {
   width: 800px;
-  background-color: rgb(199, 199, 199);
+  background-color: rgb(216, 216, 216);
   height: 300px;
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: space-around;
+  grid-template-areas: "a b b b";
   border-radius: 5px;
 }
 
 .card img {
+  grid-area: "a";
   width: 200px;
   height: 200px;
+  margin-left: 60px;
 }
 
 .content {
-  font-size: small;
+  font-size: 15px;
   font-weight: normal;
 }
 
@@ -48,4 +50,8 @@ body {
 .blue {
   border-color: blue;
   color: blue;
+}
+
+.about {
+  grid-area: "b";
 }
