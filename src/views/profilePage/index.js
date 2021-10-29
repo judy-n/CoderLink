@@ -4,6 +4,7 @@ import "./styles.css";
 import profilepic from "./static/default.jpeg"
 import Button from '@mui/material/Button';
 import Header from '../../components/Header';
+import PostThumbnail from "../../components/PostThumbnail"
 
 
 class Profile extends React.Component {
@@ -38,7 +39,9 @@ class Profile extends React.Component {
         </div>
 
         <span className="user"><h1>Posts</h1></span> 
-        <div className='userPosts'></div>    
+        <div className='userPosts'>
+            <PostThumbnail></PostThumbnail>
+            </div>    
 
                 
         </div>
