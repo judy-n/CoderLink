@@ -16,11 +16,16 @@ class Post {
 class PostList extends React.Component {
     state = {
         postList: [
-            new Post('Akshat',
+            new Post('Jake',
                     'Recommender system for cafes',
                     'Building a recommender system to recomment cafes based on previous food likings.',
                     'University of Toronto',
-                    ['Python', 'Neural networks'])
+                    ['Python', 'Neural networks']),
+            new Post('Nina',
+                    'RPG game',
+                    'Need someone proficient in C++ for my open world rpg game project',
+                    'Independent',
+                    ['C++', 'Unreal engine'])
         ]
     }
 
