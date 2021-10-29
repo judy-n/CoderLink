@@ -1,14 +1,14 @@
 import React from 'react';
 import './style.css';
 import Header from '../../components/Header';
-import PostsList from '../../components/PostsList';
+import PostList from '../../components/PostList';
 
 class Home extends React.Component {
     render() { 
         return (
             <div className='home'>
                 <Header/>
-                <PostsList/>
+                <PostList/>
             </div>
         );
     }
