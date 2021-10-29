@@ -7,7 +7,7 @@ class Home extends React.Component {
     render() { 
         return (
             <div className='home'>
-                <Header username={this.props.username}/>
+                <Header/>
                 <PostsList/>
             </div>
         );
