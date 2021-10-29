@@ -18,7 +18,7 @@ class PostThumbnail extends React.Component {
             projectTitle: this.props.projectTitle,
             description: this.props.description,
             institution: this.props.institution,
-            skills: this.props.skills
+            skills: ["C++", "Unreal Engine"]
         }
     }
 
@@ -40,14 +40,56 @@ class PostThumbnail extends React.Component {
         Need someone proficient in C++ for my open world rpg game project!
         </Typography>
         </CardContent>
-        <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <CardActions className="card-actions">
+        <h2>{this.state.skills.map((skill, i) => <span className="thumbBadge" key={i}>{skill}</span>)}</h2>
+        <Button className="view-more-btn" variant ="contained" size="small">View More</Button>
         </CardActions>
 
-     </Card>
+        </Card>
 
+        <Card className="post-thumb-card">
+            <CardMedia 
+            component="img"
+            height="140"
+            image={bannerPic}
+            alt=""></CardMedia>
+        <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          RPG Game
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        Need someone proficient in C++ for my open world rpg game project!
+        </Typography>
+        </CardContent>
+        <CardActions className="card-actions">
+        <h2>{this.state.skills.map((skill, i) => <span className="thumbBadge" key={i}>{skill}</span>)}</h2>
+        <Button className="view-more-btn" variant ="contained" size="small">View More</Button>
+        </CardActions>
 
+        </Card>
+
+        <Card className="post-thumb-card">
+            <CardMedia 
+            component="img"
+            height="140"
+            image={bannerPic}
+            alt=""></CardMedia>
+        <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          RPG Game
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        Need someone proficient in C++ for my open world rpg game project!
+        </Typography>
+        </CardContent>
+        <CardActions className="card-actions">
+        <h2>{this.state.skills.map((skill, i) => <span className="thumbBadge" key={i}>{skill}</span>)}</h2>
+        <Button className="view-more-btn" variant ="contained" size="small">View More</Button>
+        </CardActions>
+
+        </Card>
+
+        
 
 
         </div>
