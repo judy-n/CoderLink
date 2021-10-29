@@ -2,6 +2,7 @@ import React from 'react';
 import './style.css';
 import PostCard from '../PostCard';
 import { uid } from 'react-uid';
+import ToolBar from '../ToolBar';
 
 class Post {
     constructor(username, projectTitle, description, institution, skills) {
@@ -29,20 +30,34 @@ class PostList extends React.Component {
         ]
     }
 
+    addPost = (username, projectTitle, description, institution, skills) => {
+        const newPostList = this.state.postList;
+        const newPost = new Post(username, projectTitle, description, institution, skills);
+        newPostList.push(newPost);
+        this.setState({
+            postList: newPostList
+        })
+    }
+
     render() {
         return (
-            <div className='postList'>
-                {this.state.postList.map((post) => {
-                    return (
-                        <PostCard key={uid(post)}
-                            username={post.username}
-                            projectTitle={post.projectTitle}
-                            description={post.description}
-                            institution={post.institution}
-                            skills={post.skills}
-                        />
-                    );
-                })}
+            <div>
+                <ToolBar
+                    addPost={this.addPost}
+                />
+                <div className='postList'>
+                    {this.state.postList.map((post) => {
+                        return (
+                            <PostCard key={uid(post)}
+                                username={post.username}
+                                projectTitle={post.projectTitle}
+                                description={post.description}
+                                institution={post.institution}
+                                skills={post.skills}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         );
     }

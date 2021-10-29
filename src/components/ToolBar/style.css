@@ -1,0 +1,30 @@
+.toolBar-container {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    justify-content: space-around;
+}
+
+.toolBar {
+    display: flex;
+    place-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    width: 40%;
+}
+
+.MuiButton-root.about-btn {
+    padding: 5px;
+    color: white;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.MuiButton-root.about-btn.blue {
+    background-color: #184e77;
+}
+
+.MuiButton-root.about-btn.blue:hover {
+    background-color: #5b83a2;
+    color: white;
+}
