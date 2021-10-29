@@ -9,7 +9,9 @@ class App extends React.Component {
 
 
   state = {
+    username: 'Judy'
   }
+
   render() {
     return(
       <div>
@@ -24,6 +26,7 @@ class App extends React.Component {
       </div>
     );
   }
+
 }
 
 export default App;
