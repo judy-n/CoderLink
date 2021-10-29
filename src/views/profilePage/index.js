@@ -37,6 +37,10 @@ class Profile extends React.Component {
             </div>
             {/* <span className="user">@{this.state.username}</span> */}
         </div>
+
+        <span className="user"><h1>Posts</h1></span> 
+        <div className='userPosts'></div>    
+
                 
         </div>
         );
