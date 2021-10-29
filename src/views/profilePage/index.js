@@ -3,6 +3,7 @@ import React from 'react';
 import "./styles.css";
 import profilepic from "./static/default.jpeg"
 import Button from '@mui/material/Button';
+import Header from '../../components/Header';
 
 
 class Profile extends React.Component {
@@ -17,8 +18,9 @@ class Profile extends React.Component {
     render() { 
         return (
         <div className="profilePage">
+            <Header/>
         
-        <h1>Profile of {this.state.username}</h1>
+        <span className="user"><h1>@{this.state.username}</h1></span>
         
         <div className='card'>
             {/* Profile pic */}
@@ -33,6 +35,7 @@ class Profile extends React.Component {
                   <Button onClick={() => {}} variant="contained" className="about-btn green">Portfolio</Button>
                 </div>
             </div>
+            {/* <span className="user">@{this.state.username}</span> */}
         </div>
                 
         </div>
