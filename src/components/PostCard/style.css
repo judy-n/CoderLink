@@ -1,0 +1,56 @@
+.post-card {
+    background-color: rgb(216, 216, 216);
+    border-radius: 5px;
+    margin: 2em;
+}
+
+.post-card h1 {
+    display: block;
+}
+
+.card {
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.about {
+    width: 60%;
+}
+
+.content {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.badge {
+    font-size: 15px;
+    font-weight: normal;
+    color: #184e77;
+    padding: 5px;
+    border: 2px solid#184e77;
+    border-radius: 15px;
+    margin: 2px;
+}
+
+.about-buttons {
+    margin-top: 4rem;
+    margin-left: 9rem;
+}
+
+.MuiButton-root.about-btn {
+    padding: 5px;
+    color: white;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.MuiButton-root.about-btn.blue {
+    background-color: #184e77;
+}
+
+.MuiButton-root.about-btn.blue:hover {
+    background-color: #5b83a2;
+    color: white;
+}
