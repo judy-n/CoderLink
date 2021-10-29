@@ -3,13 +3,24 @@ import './style.css';
 import Button from '@mui/material/Button';
 
 class PostCard extends React.Component {
-    state = {
-        username: 'Akshat',
-        projectTitle: 'Recommender system for cafes',
-        description: 'Building a recommender system to recommend cafes based on previous choices of food',
-        institution: 'University of Toronto',
-        skills: ['Python', 'Neural networks']
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: this.props.username,
+            projectTitle: this.props.projectTitle,
+            description: this.props.description,
+            institution: this.props.institution,
+            skills: this.props.skills
+        }
     }
+
+    // state = {
+    //     username: 'Akshat',
+    //     projectTitle: 'Recommender system for cafes',
+    //     description: 'Building a recommender system to recommend cafes based on previous choices of food',
+    //     institution: 'University of Toronto',
+    //     skills: ['Python', 'Neural networks']
+    // }
 
     render() {
         return (
