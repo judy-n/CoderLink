@@ -1,0 +1,15 @@
+.loginPage {
+  display: grid;
+  place-items: center;
+}
+
+.form {
+  width: 800px;
+  background-color: #c4dcee;
+  height: 300px;
+  display: grid;
+}
+
+.loginPage h2 {
+  margin-top: 100px;
+}

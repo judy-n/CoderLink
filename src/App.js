@@ -4,6 +4,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 import Profile from './views/profilePage/index';
 import Home from './views/Home';
+import Login from './views/Login'
 
 class App extends React.Component {
 
@@ -21,6 +22,8 @@ class App extends React.Component {
                             (<Home/>)}/>
         <Route exact path='/profile' render={() => 
                             (<Profile username={this.state.username}/>)}/>
+        <Route exact path='/login' render={() => 
+                            (<Login/>)}/>
         </Switch>
        </BrowserRouter>
       </div>
