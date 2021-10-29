@@ -26,20 +26,13 @@ body {
 }
 
 .badge {
-  font-size: small;
+  font-size: 15px;
   font-weight: normal;
+  color: blue;
   padding: 5px;
-  border: 3px solid blue;
+  border: 2px solid blue;
   border-radius: 15px;
   margin: 2px;
-}
-
-.about-btn {
-  padding: 5px;
-  border: 1px solid green;
-  color: green;
-  margin: 1px;
-  cursor: pointer;
 }
 
 .green {
@@ -54,4 +47,29 @@ body {
 
 .about {
   grid-area: "b";
+}
+
+.MuiButton-root.about-btn {
+  padding: 5px;
+  color: white;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.MuiButton-root.about-btn.blue:hover {
+  background-color: white;
+  color: blue;
+}
+
+.MuiButton-root.about-btn.green {
+  background-color: green;
+}
+
+.MuiButton-root.about-btn.blue {
+  background-color: blue;
+}
+
+.MuiButton-root.about-btn.green:hover {
+  background-color: white;
+  color: green;
 }

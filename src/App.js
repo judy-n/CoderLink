@@ -9,7 +9,6 @@ class App extends React.Component {
 
 
   state = {
-    username: "judy-n"
   }
   render() {
     return(
