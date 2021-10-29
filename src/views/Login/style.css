@@ -3,13 +3,29 @@
   place-items: center;
 }
 
-.form {
-  width: 800px;
-  background-color: #c4dcee;
-  height: 300px;
-  display: grid;
+.loginForm {
+  width: 700px;
+  background-color: rgb(216, 216, 216);
+  height: 200px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .loginPage h2 {
   margin-top: 100px;
+}
+
+.loginForm .MuiTextField-root {
+  color: black;
+  background-color: white;
+  margin: 5px;
+  border-radius: 7px;
+}
+
+.MuiButton-root.loginButton {
+  background-color: #184e77;
+  margin: 5px;
 }
