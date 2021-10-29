@@ -3,13 +3,65 @@
 }
 
 
-.postHeaderContainer {
-    margin-top: 50px;
+/* Main Div Classes */
+.leftSide {
+    float: left;
     margin-left: 150px;
 }
 
+.rightSide {
+    float: right;
+}
+
+.postHeaderContainer {
+    margin-top: 50px;
+    margin-left: 20px;
+    width: 800px;
+    height: 100px;
+}
+
+.postBanner {
+    width: 800px;
+    height: 100px;
+}
+
+.postBanner img {
+    max-width: 800px;
+    max-height: 400px;
+}
+
+.postTitle {
+    margin-top: 110px;
+    width: 800px;
+    height: 100px;
+    background-color: cadetblue;
+    text-align: center;
+}
+
+.postText {
+    max-width: 800px;
+}
+
+.tagList {
+    background-color: rgb(216, 216, 216);
+    color: saddlebrown;
+    width: 200px;
+    float: right;
+    text-align: center;
+    margin-top: 50px;
+    margin-right: 250px;
+    list-style: none;
+    display: inline-block;
+}
+
+/* Specific Classes */
 .datePosted {
     color: blueviolet;
+}
+
+.profilePicture {
+    float: left;
+    margin-right: 50px;
 }
 
 .profilePicture img {
@@ -18,18 +70,25 @@
     border-radius: 50%;
 }
 
+.username {
+    font-size: 200%;
+}
 
-.postBanner {
-    display: block;
-    width: 100%;
-    height: 300px;
+.MuiButton-root.applyButton {
+    padding: 5px;
+    color: white;
+    background-color: #184e77;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.MuiButton-root.applyButton:hover {
+  background-color: #5b83a2;
+  color: white;
 }
 
 .postTitle h2 {
-    margin-top: 100px;
+    padding-top: 20px;
+    font-size: 300%
 }
 
-.tagList {
-    float: right;
-    margin-right: 50px;
-}
