@@ -28,21 +28,11 @@
 .badge {
   font-size: 15px;
   font-weight: normal;
-  color: blue;
+  color: #184e77;
   padding: 5px;
-  border: 2px solid blue;
+  border: 2px solid#184e77;
   border-radius: 15px;
   margin: 2px;
-}
-
-.green {
-  border-color: green;
-  color: green;
-}
-
-.blue {
-  border-color: blue;
-  color: blue;
 }
 
 .about {
@@ -57,19 +47,19 @@
 }
 
 .MuiButton-root.about-btn.blue:hover {
-  background-color: white;
-  color: blue;
+  background-color: #5b83a2;
+  color: white;
 }
 
 .MuiButton-root.about-btn.green {
-  background-color: green;
+  background-color: #34a0a4;
 }
 
 .MuiButton-root.about-btn.blue {
-  background-color: blue;
+  background-color: #184e77;
 }
 
 .MuiButton-root.about-btn.green:hover {
-  background-color: white;
-  color: green;
+  background-color: #7ac3c6;
+  color: white;
 }
