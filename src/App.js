@@ -11,7 +11,6 @@ class App extends React.Component {
 
 
   state = {
-    username: 'Judy'
   }
 
   render() {
@@ -22,7 +21,7 @@ class App extends React.Component {
         <Route exact path='/' render={() => 
                             (<Home/>)}/>
         <Route exact path='/profile' render={() => 
-                            (<Profile username={this.state.username}/>)}/>
+                            (<Profile/>)}/>
         <Route exact path='/login' render={() => 
                             (<Login/>)}/>
         <Route exact path='/post' render={() => 

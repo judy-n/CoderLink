@@ -5,7 +5,8 @@ import profilepic from "./static/default.jpeg"
 import Button from '@mui/material/Button';
 import Header from '../../components/Header';
 import PostThumbnail from "../../components/PostThumbnail"
-
+import pixel from './static/pixel.png'
+import coffee from './static/coffee.jpg'
 
 class Profile extends React.Component {
 
@@ -15,7 +16,12 @@ class Profile extends React.Component {
         bio: "Hi I'm a silly goose!",
         institution: "University of Toronto",
         skills: ["Python", "Java"],
+        // postList: this.state.UserPostList
     }
+
+
+
+
     render() { 
         return (
         <div className="profilePage">
@@ -40,7 +46,32 @@ class Profile extends React.Component {
 
         <span className="user"><h1>Posts</h1></span> 
         <div className='userPosts'>
-            <PostThumbnail></PostThumbnail>
+            <PostThumbnail
+            username={this.state.username}
+            projectTitle = 'RPG Game'
+            description='Need someone proficient in C++ for my open world rpg game project'
+            skills ={["C++", "Unreal Engine"]}
+            banner={pixel}
+            institution = {this.state.institution}
+            />
+
+            <PostThumbnail
+            username={this.state.username}
+            projectTitle = 'Recommender system for cafes'
+            description = 'Building a recommender system to recomment cafes based on...'
+            skills = {["Python", "Neural networks"]}
+            institution = {this.state.institution}
+            banner={coffee}
+            />
+
+            <PostThumbnail
+            username={this.state.username}
+            projectTitle = 'RPG Game'
+            description='Need someone proficient in C++ for my open world rpg game project'
+            skills ={["C++", "Unreal Engine"]}
+            banner={pixel}
+            institution = {this.state.institution}
+            />  
             </div>    
 
                 
