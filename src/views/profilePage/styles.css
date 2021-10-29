@@ -3,7 +3,7 @@
   place-items: center;
 }
 
-.card {
+.ProfileCard {
   width: 800px;
   background-color: rgb(216, 216, 216);
   height: 300px;
@@ -13,19 +13,19 @@
   border-radius: 5px;
 }
 
-.card img {
+.ProfileCard img {
   grid-area: "a";
   width: 200px;
   height: 200px;
   margin-left: 60px;
 }
 
-.content {
+.ProfileContent {
   font-size: 15px;
   font-weight: normal;
 }
 
-.badge {
+.ProfileBadge {
   font-size: 15px;
   font-weight: normal;
   color: #184e77;

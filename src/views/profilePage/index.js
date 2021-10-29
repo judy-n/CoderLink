@@ -22,20 +22,19 @@ class Profile extends React.Component {
         
         <span className="user"><h1>@{this.state.username}</h1></span>
         
-        <div className='card'>
+        <div className='ProfileCard'>
             {/* Profile pic */}
             <img src={profilepic} alt=""></img>
-            <div className='about'>
-                <h3>Name: <span className="content">{this.state.name}</span></h3>
-                <h3>Bio: <span className="content">{this.state.bio}</span></h3>
-                <h3>Institution: <span className="content">{this.state.institution}</span></h3>
-                <h3>Skills: {this.state.skills.map((skill, i) => <span className="badge" key={i}>{skill}</span>)}</h3>
-                <div className="about-buttons">
+            <div className='ProfileAbout'>
+                <h3>Name: <span className="ProfileContent">{this.state.name}</span></h3>
+                <h3>Bio: <span className="ProfileContent">{this.state.bio}</span></h3>
+                <h3>Institution: <span className="ProfileContent">{this.state.institution}</span></h3>
+                <h3>Skills: {this.state.skills.map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
+                <div className="about-buttons-profile">
                   <Button onClick={() => {}} variant ="contained" className="about-btn blue">Connect</Button>
                   <Button onClick={() => {}} variant="contained" className="about-btn green">Portfolio</Button>
                 </div>
             </div>
-            {/* <span className="user">@{this.state.username}</span> */}
         </div>
 
         <span className="user"><h1>Posts</h1></span> 
