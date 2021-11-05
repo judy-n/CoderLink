@@ -6,6 +6,7 @@ import Profile from './views/profilePage/index';
 import Home from './views/Home';
 import Login from './views/Login'
 import Post from './views/posts/index';
+import Portfolio from './views/Portfolio';
 
 class App extends React.Component {
 
@@ -27,6 +28,8 @@ class App extends React.Component {
         <Route exact path='/post' render={() => 
                             (<Post/>)}/>
         
+        <Route exact path='/portfolio' render={() => 
+                            (<Portfolio/>)}/>
         </Switch>
        </BrowserRouter>
       </div>

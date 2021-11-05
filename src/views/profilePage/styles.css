@@ -5,7 +5,9 @@
 
 .ProfileCard {
   width: 800px;
-  background-color: rgb(216, 216, 216);
+  /* background-color: rgb(216, 216, 216); */
+  background-color: rgb(242, 242, 242);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   height: 300px;
   display: grid;
   align-items: center;
