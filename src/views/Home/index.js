@@ -8,7 +8,10 @@ class Home extends React.Component {
         return (
             <div className='home'>
                 <Header/>
-                <PostList/>
+                <PostList
+                    postList = {this.props.postList}
+                    addPost = {this.props.addPost}
+                />
             </div>
         );
     }
