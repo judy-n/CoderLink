@@ -7,6 +7,7 @@ import Home from './views/Home';
 import Login from './views/Login'
 import Post from './views/posts/index';
 import Portfolio from './views/Portfolio';
+import NewPostPage from './views/newPostPage';
 
 import { addPost, getUserPosts, removePost } from './actions/PostListActions';
 import { addUser, removeUser, getUser } from './actions/UserListActions';
@@ -46,6 +47,9 @@ class App extends React.Component {
         
         <Route exact path='/portfolio' render={() => 
                             (<Portfolio/>)}/>
+        <Route exact path='/newPostPage' render={() =>
+                            (<NewPostPage/>)}/>
+        
         </Switch>
        </BrowserRouter>
       </div>
