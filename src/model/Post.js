@@ -1,6 +1,6 @@
 import { v4 as uid } from 'uuid';
 
-class Post {
+class PostEntity {
 
     constructor(author) {
         this.postID = uid();
@@ -31,4 +31,4 @@ class Post {
 
 }
 
-export default Post;
+export default PostEntity;

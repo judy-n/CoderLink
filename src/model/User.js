@@ -1,4 +1,4 @@
-class User {
+class UserEntity {
 
     constructor(username, password) {
         this.username = username;
@@ -26,4 +26,4 @@ class User {
     }
 }
 
-export default User;
+export default UserEntity;

@@ -1,4 +1,4 @@
-class UserList {
+class UserListEntity {
 
     constructor() {
         this.users = [];
@@ -29,4 +29,4 @@ class UserList {
 
 }
 
-export default UserList;
+export default UserListEntity;

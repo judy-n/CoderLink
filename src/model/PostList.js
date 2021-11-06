@@ -1,4 +1,4 @@
-class PostList {
+class PostListEntity {
 
     constructor() {
         this.posts = []
@@ -30,4 +30,4 @@ class PostList {
 
 }
 
-export default PostList;
+export default PostListEntity;
