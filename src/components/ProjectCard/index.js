@@ -21,6 +21,7 @@ class ProjectCard extends React.Component {
             description: this.props.description,
             // skills: this.props.skills,
             banner: this.props.banner,
+            skills: this.props.skills,
             // githubLink: this.props.githubLink,
             // projLink: this.props.projLink
 
@@ -45,13 +46,17 @@ class ProjectCard extends React.Component {
                      {this.state.description}
                     </Typography>
                     </CardContent>
-                    <CardActions>
-                    <IconButton aria-label="github repo">
+                    <CardActions id="port-CardActions">
+                        <div>
+                        <IconButton aria-label="github repo">
                     <GitHubIcon />
                     </IconButton>
                     <IconButton aria-label="link">
                     <LinkIcon />
                     </IconButton>
+                        </div>
+
+                    <div>{this.state.skills.map((skill, i) => <span className="projBadge" key={i}>{skill}</span>)}</div>
                     </CardActions>
                 </Card>
                 </div>

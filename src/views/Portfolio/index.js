@@ -22,6 +22,7 @@ class Portfolio extends React.Component {
 
     state = {
         name: "Judy Naamani",
+        skills: ["Python", "Java", "C++"]
     }
 
     render() { 
@@ -35,12 +36,16 @@ class Portfolio extends React.Component {
                 <img src={profilepic}></img>
                 <div className="port-name">
                 <Typography gutterBottom variant="h6" component="div" id="portName">{this.state.name}</Typography>
-                {/* <h4>{this.state.name}</h4> */}
                 <div className="port-icons">
                 <a href="#"><img src={github}></img></a>
                 <a href="#"><img src={resume}></img></a>
                 </div>
                 </div>
+                <div className="port-prof-skills">
+                <div className="port-vl"></div>
+                <div className="prof-skill-list">{this.state.skills.map((skill, i) => <span key={i}>{skill}</span>)}</div>
+                </div>
+
             </div>
             
             </div>
@@ -52,6 +57,7 @@ class Portfolio extends React.Component {
             title="Vardew Stalley"
             banner={pixel}
             description="A farming RPG game for PC, final project for a university course."
+            skills={["C#", "Unity"]}
             />
 
             <ProjectCard
@@ -59,6 +65,7 @@ class Portfolio extends React.Component {
             title="Forkknife"
             banner={shooter}
             description="Online multiplayer shooter game that I made for a hackathon."
+            skills={["C++", "Unreal Engine"]}
             />
 
             <ProjectCard
@@ -66,6 +73,7 @@ class Portfolio extends React.Component {
             title="Vardew Stalley"
             banner={pixel}
             description="A farming RPG game for PC, final project for a university course."
+            skills={["C#", "Unity"]}
             />
                 
             </div>

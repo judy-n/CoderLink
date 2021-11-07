@@ -13,7 +13,7 @@
 .port-projects {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background-color: white;
+  background-color: rgb(240, 248, 255);
 }
 
 .port-profile {
@@ -64,4 +64,42 @@
 
 #projCardCont {
   border-top: solid 1rem rgb(193, 209, 222);
+}
+
+.projBadge {
+  margin-left: 2rem;
+  font-size: 12px;
+  font-weight: normal;
+  color: rgb(193, 209, 222);
+  padding: 5px;
+  border: 2px solid rgb(193, 209, 222);
+  border-radius: 10px;
+  margin: 2px;
+}
+
+#port-CardActions {
+  justify-content: space-between;
+}
+
+.port-vl {
+  border-left: 3px solid black;
+  margin: 0.25rem;
+  /* height: 200px; */
+  margin-left: 1rem;
+}
+
+.port-prof-skills {
+  display: flex;
+  width: 200px;
+  margin-top: 1rem;
+  border-radius: 10px;
+  background-color: rgb(193, 209, 222);
+  padding: 1rem;
+}
+
+.prof-skill-list {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }
