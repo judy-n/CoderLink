@@ -30,12 +30,25 @@ class App extends React.Component {
     this.addUser = addUser.bind(this);
     this.removeUser = removeUser.bind(this);
     this.getUser = getUser.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   componentDidMount() {
     const newUser = new UserEntity('admin', 'admin');
     newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
-    this.setState({currentUser: newUser});
+    this.setState({
+      userList: [newUser],
+      currentUser: newUser
+    });
+  }
+
+  handleLogin(username, password) {
+    const user = this.getUser(username);
+    if(user) {
+      const loginStatus = user.verifyPassword(password);
+      this.setState({loggedIn: loginStatus});
+    }
+    return this.state.loggedIn;
   }
 
   render() {
@@ -43,12 +56,16 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
         <Switch>
+        
         <Route exact path='/' render={() => 
                             (<Home postList = {this.state.postList} addPost = {this.addPost}/>)}/>
         <Route exact path='/profile' render={() => 
                             (<Profile/>)}/>
         <Route exact path='/login' render={() => 
-                            (<Login/>)}/>
+                            (<Login
+                              handleLogin={this.handleLogin}
+                              loggedIn={this.state.loggedIn}
+                            />)}/>
         <Route exact path='/post' render={() => 
                             (<Post/>)}/>
         
