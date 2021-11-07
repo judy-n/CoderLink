@@ -58,7 +58,7 @@ class Profile extends React.Component {
             <PostThumbnail
             username={this.state.username}
             projectTitle = 'Recommender system for cafes'
-            description = 'Building a recommender system to recomment cafes based on...'
+            description = "Building a recommender system to recommend cafes based on the users' favorite restaurants. Looking for someone with experience working with blah blah"
             skills = {["Python", "Neural networks"]}
             institution = {this.state.institution}
             banner={coffee}

@@ -41,3 +41,7 @@
   justify-content: space-around;
   column-gap: 160px;
 }
+
+#post-Desc {
+  height: 2rem;
+}

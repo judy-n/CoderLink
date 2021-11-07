@@ -19,12 +19,22 @@ class PostThumbnail extends React.Component {
             description: this.props.description,
             institution: this.props.institution,
             skills: this.props.skills,
-            banner: this.props.banner
+            banner: this.props.banner,
         }
     }
-
+    
 
     render() { 
+
+        // Truncate description 
+        let desc;
+        if (this.props.description.length <= 125){
+            desc=this.props.description
+        }
+        else {
+            desc=(this.props.description).substring(0, 125) + "...";
+        }
+
         return (<div className="PostThumbnail">
         
         <Card className="post-thumb-card">
@@ -36,8 +46,8 @@ class PostThumbnail extends React.Component {
         <Typography gutterBottom variant="h5" component="div">
           {this.props.projectTitle}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-        {this.props.description}
+        <Typography id="post-Desc" variant="body2" color="text.secondary">
+        {desc}
         </Typography>
         </CardContent>
         <CardActions className="card-actions">
