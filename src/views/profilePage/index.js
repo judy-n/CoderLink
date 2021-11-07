@@ -38,8 +38,8 @@ class Profile extends React.Component {
                 <h3>Institution: <span className="ProfileContent">{this.state.institution}</span></h3>
                 <h3>Skills: {this.state.skills.map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
                 <div className="about-buttons-profile">
-                  <Button onClick={() => {}} variant ="contained" className="about-btn blue">Connect</Button>
-                  <Button onClick={() => {}} variant="contained" className="about-btn green">Portfolio</Button>
+                  <Button variant ="contained" className="about-btn blue">Connect</Button>
+                  <Button href="portfolio" variant="contained" className="about-btn green">Portfolio</Button>
                 </div>
             </div>
         </div>
