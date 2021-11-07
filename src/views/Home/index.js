@@ -11,6 +11,8 @@ class Home extends React.Component {
                 <PostList
                     postList = {this.props.postList}
                     addPost = {this.props.addPost}
+                    currentUsername = {this.props.currentUsername}
+                    isAdmin = {this.props.isAdmin}
                 />
             </div>
         );

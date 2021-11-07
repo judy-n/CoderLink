@@ -26,6 +26,8 @@ class PostList extends React.Component {
                                 skills ={post.skillsRequired}
                                 banner={coffee}
                                 institution = {post.institutions[0]}
+                                currentUsername = {this.props.currentUsername}
+                                isAdmin = {this.props.isAdmin}
                             />
                         );
                     })}

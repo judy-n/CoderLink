@@ -16,7 +16,9 @@ class PostCard extends React.Component {
             description: this.props.description,
             institution: this.props.institution,
             skills: this.props.skills,
-            banner: this.props.banner
+            banner: this.props.banner,
+            isAdmin: this.props.isAdmin,
+            currentUsername: this.props.currentUsername
         }
     }
 
@@ -53,7 +55,13 @@ class PostCard extends React.Component {
                     </CardContent>
                     <CardActions className="card-bottom">
                         <h2>{this.state.skills.map((skill, i) => <span className="thumbBadge" key={i}>{skill}</span>)}</h2>
-                        <Button className="view-more-btn" variant ="contained" size="small">View More</Button>
+                        <div className='card-bottom-buttons'>
+                            <Button className="view-more-btn" variant ="contained" size="small">View More</Button>
+                            {
+                                (this.props.isAdmin || (this.props.currentUsername === this.props.username)) &&
+                                <Button className="view-more-btn" variant ="contained" size="small">Delete</Button>
+                            }
+                        </div>
                     </CardActions>
                 </Card>
             </div>

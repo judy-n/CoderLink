@@ -17,14 +17,6 @@ import { addPost, getUserPosts, removePost } from './actions/PostListActions';
 import { addUser, removeUser, getUser } from './actions/UserListActions';
 
 class App extends React.Component {
-
-  state = {
-    userList: [],
-    postList: [],
-    currentUser: null,
-    loggedIn: false
-  }
-
   constructor(props) {
     super(props);
     this.addPost = addPost.bind(this);
@@ -35,11 +27,10 @@ class App extends React.Component {
     this.getUser = getUser.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
-  }
 
-  componentDidMount() {
     const newUser = new UserEntity('admin', 'admin');
     newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
+    newUser.userType = 'admin';
     this.setState({
       userList: [newUser],
       currentUser: newUser
@@ -52,7 +43,6 @@ class App extends React.Component {
       'University of Toronto',
       ['Python', 'Deep learning']
     );
-    this.addPost(newPost1);
     const newPost2 = new PostEntity('johnny');
     newPost2.addInformation(
       'A game engine in C',
@@ -61,7 +51,6 @@ class App extends React.Component {
       'University of Toronto',
       ['C', 'Linear algebra', 'Vector calculus']
       );
-    this.addPost(newPost2);
     const newPost3 = new PostEntity('chloe');
     newPost3.addInformation(
       'An application to support the underprivileged',
@@ -70,7 +59,13 @@ class App extends React.Component {
       'University of Waterloo',
       ['Flutter', 'Figma']
     );
-    this.addPost(newPost3);
+    
+    this.state = {
+      postList: [newPost1, newPost2, newPost3],
+      userList: [newUser],
+      currentUser: newUser,
+      loggedIn: false
+    }
   }
 
   handleLogin(username, password) {
@@ -98,7 +93,13 @@ class App extends React.Component {
         <Switch>
         
         <Route exact path='/' render={() => 
-                            (<Home postList = {this.state.postList} addPost = {this.addPost}/>)}/>
+                            (<Home 
+                              postList = {this.state.postList} 
+                              addPost = {this.addPost}
+                              currentUsername = {this.state.currentUser.username}
+                              isAdmin = {this.state.currentUser.userType === 'admin'}
+                              />
+                            )}/>
         <Route exact path='/profile' render={() => 
                             (<Profile/>)}/>
         <Route exact path='/login' render={() => 
