@@ -21,3 +21,9 @@
     width: 50%;
     place-self: center;
 }
+
+.new-post-form .MuiButton-root a {
+    color: white;
+    text-decoration: none;
+    width: 100%;
+}
