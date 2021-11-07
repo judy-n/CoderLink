@@ -83,6 +83,7 @@ class SignupPage extends React.Component {
                         variant="outlined"
                         label="Skills"
                         onChange={(e) => this.setState({skills: e.target.value})}
+                        helperText='Separate with ", "'
                     />
                     <Button
                         variant="contained"

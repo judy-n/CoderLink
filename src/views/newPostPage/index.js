@@ -37,6 +37,7 @@ class NewPostPage extends React.Component {
         return(
             <div className='new-post-form-container'>
                 <Header/>
+                <h2>Create a new post</h2>
                 <form className='new-post-form'>
                     <TextField
                         variant="outlined"
@@ -59,6 +60,7 @@ class NewPostPage extends React.Component {
                         variant="outlined"
                         label="Skills required"
                         onChange={(e) => this.setState({skillsRequired: e.target.value})}
+                        helperText='Separate with ", "'
                     />
                     <Button
                         variant="contained"

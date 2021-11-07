@@ -3,16 +3,25 @@
     place-items: center;
 }
 
+.new-post-form-container h2 {
+    color: #4b4b4b;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .new-post-form {
-    width: 40vw;
+    width: 30vw;
     display: flex;
     flex-direction: column;
     margin: 2em;
+    padding: 2em;
+    background-color: rgb(242, 242, 242);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 10px;
+    margin-top: 1em;
 }
 
 .new-post-form .MuiTextField-root {
     color: black;
-    background-color: white;
     margin: 10px;
     border-radius: 7px;
 }

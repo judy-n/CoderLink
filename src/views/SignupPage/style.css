@@ -14,6 +14,10 @@
     flex-direction: column;
     margin: 1rem;
     width: 25vw;
+    background-color: rgb(242, 242, 242);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    padding: 2rem;
+    border-radius: 10px;
 }
 
 .signup-form .field-short {
@@ -23,7 +27,6 @@
 
 .signup-form .MuiTextField-root {
     color: black;
-    background-color: white;
     margin: 7px;
     border-radius: 7px;
 }
