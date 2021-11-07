@@ -117,7 +117,6 @@ class App extends React.Component {
                               addPost={this.addPost}
                             />)}/>
 
-<<<<<<< HEAD
         <Route
           exact path='/signup'
           render={
@@ -129,7 +128,6 @@ class App extends React.Component {
           }
         />
         
-=======
         <Route exact path='/editProfile' render={() =>
                             (<EditProfile
                               username="judy-n"
@@ -139,7 +137,6 @@ class App extends React.Component {
                               skills= {["Python", "Java"]}
 
                             />)}/>
->>>>>>> ccff8b20b34487d03b92ffb6e650658b0fd08874
         </Switch>
        </BrowserRouter>
       </div>
