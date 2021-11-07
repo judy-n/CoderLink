@@ -1,31 +1,35 @@
-.post-card {
-    background-color: rgb(216, 216, 216);
-    border-radius: 5px;
+.post-card-container {
     margin: 2em;
-    width: 40%;
+    width: 35%;
 }
 
-.post-card h1 {
-    display: block;
+.MuiCard-root.post-card {
+    display: grid;
+    width: 100%;
+    height: 100%;
 }
 
-.card {
-    margin: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.MuiCard-root.post-card img {
+    max-height: 140px;
 }
 
-.about {
-    width: 60%;
+.MuiCard-root .MuiCardContent-root.card-content {
+    padding-bottom: 0;
 }
 
-.content {
-    font-size: 15px;
-    font-weight: normal;
+.MuiButton-root.view-more-btn {
+    width: 7rem;
+    margin: 4px;
+    background-color: #34a0a4;
 }
 
-.badge {
+.MuiButton-root.view-more-btn:hover {
+    margin: 4px;
+    background-color: #7ac3c6;
+}
+
+.thumbBadge {
+    display: inline-block;
     font-size: 15px;
     font-weight: normal;
     color: #184e77;
@@ -35,23 +39,12 @@
     margin: 2px;
 }
 
-.about-buttons {
-    margin-top: 4rem;
-    margin-left: 9rem;
+.MuiCardActions-root.card-bottom {
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: max-content;
 }
 
-.MuiButton-root.about-btn {
-    padding: 5px;
-    color: white;
-    margin: 4px;
-    cursor: pointer;
-}
-
-.MuiButton-root.about-btn.blue {
-    background-color: #184e77;
-}
-
-.MuiButton-root.about-btn.blue:hover {
-    background-color: #5b83a2;
-    color: white;
+#post-Desc {
+    font-weight: bold;
 }
