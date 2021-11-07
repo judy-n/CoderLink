@@ -1,9 +1,12 @@
 import React from 'react';
 import "./style.css";
-import Header from "../../components/Header";
+import { Link } from 'react-router-dom';
 
+import Header from "../../components/Header";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+
+import PostEntity from '../../model/Post';
 
 class NewPostPage extends React.Component {
     constructor(props) {
@@ -19,12 +22,21 @@ class NewPostPage extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state)
+        const newPost = new PostEntity(this.props.currentUser.username);
+        newPost.addInformation(
+            this.state.title,
+            this.state.descriptionShort,
+            this.state.descriptionFull,
+            this.props.currentUser.institution,
+            this.state.skillsRequired.split(", ")
+        );
+        this.props.addPost(newPost);
     }
-
+    
     render() {
         return(
             <div className='new-post-form-container'>
+                <Header/>
                 <form className='new-post-form'>
                     <TextField
                         variant="outlined"
@@ -54,7 +66,9 @@ class NewPostPage extends React.Component {
                         type="submit"
                         onClick={this.handleSubmit.bind(this)}
                     >
-                        Create Post
+                        <Link to='/'>
+                            Create Post
+                        </Link>
                     </Button>
                 </form>
             </div>

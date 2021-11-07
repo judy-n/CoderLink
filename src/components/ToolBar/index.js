@@ -3,6 +3,7 @@ import './style.css';
 import { Button, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import PostEntity from "../../model/Post";
+import { Link } from "react-router-dom";
 
 class ToolBar extends React.Component {
     render() {
@@ -10,12 +11,10 @@ class ToolBar extends React.Component {
         return (
             <div className='toolBar-container'>
                 <div className='toolBar'>
-                    <Button variant='contained' className='about-btn blue' onClick={() => {
-                            const newPost = new PostEntity('name');
-                            newPost.addInformation('project title', 'project description', '', 'institution', ['skill'])
-                            addPost(newPost);
-                        }}>
-                        New Post
+                    <Button variant='contained' className='about-btn blue'>
+                        <Link to='/newPostPage'>
+                            New Post
+                        </Link>
                     </Button>
                     <TextField
                         id='outlined-start-adornment'

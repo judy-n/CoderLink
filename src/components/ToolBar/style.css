@@ -28,3 +28,8 @@
     background-color: #5b83a2;
     color: white;
 }
+
+.MuiButton-root.about-btn a {
+    text-decoration: none;
+    color: white;
+}

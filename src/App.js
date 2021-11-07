@@ -8,6 +8,7 @@ import Login from './views/Login'
 import Post from './views/posts/index';
 import Portfolio from './views/Portfolio';
 import NewPostPage from './views/newPostPage';
+import UserEntity from './model/User';
 
 import { addPost, getUserPosts, removePost } from './actions/PostListActions';
 import { addUser, removeUser, getUser } from './actions/UserListActions';
@@ -31,6 +32,12 @@ class App extends React.Component {
     this.getUser = getUser.bind(this);
   }
 
+  componentDidMount() {
+    const newUser = new UserEntity('admin', 'admin');
+    newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
+    this.setState({currentUser: newUser});
+  }
+
   render() {
     return(
       <div>
@@ -48,7 +55,10 @@ class App extends React.Component {
         <Route exact path='/portfolio' render={() => 
                             (<Portfolio/>)}/>
         <Route exact path='/newPostPage' render={() =>
-                            (<NewPostPage/>)}/>
+                            (<NewPostPage
+                              currentUser={this.state.currentUser}
+                              addPost={this.addPost}
+                            />)}/>
         
         </Switch>
        </BrowserRouter>
