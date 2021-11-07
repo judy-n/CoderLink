@@ -5,20 +5,51 @@
 
 .port-sidebar {
   background-color: rgb(236, 250, 255);
-  height: 700px;
+  height: 800px;
   display: flex;
   justify-content: center;
 }
 
 .port-projects {
-  background-color: grey;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: white;
 }
 
 .port-profile {
   width: 250px;
   height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: rgb(242, 242, 242);
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   margin-top: 2rem;
   border-radius: 10px;
+}
+
+.port-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Arial", sans-serif;
+}
+
+.port-icons img {
+  width: 40px;
+  height: 40px;
+}
+
+.port-icons {
+  display: flex;
+  column-gap: 0.5rem;
+  background-color: rgb(193, 215, 222);
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.port-proj-card {
+  margin: 3rem;
+  height: 200px;
 }
