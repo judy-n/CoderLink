@@ -10,6 +10,7 @@ import Portfolio from './views/Portfolio';
 import NewPostPage from './views/newPostPage';
 import UserEntity from './model/User';
 import PostEntity from './model/Post';
+import SignupPage from './views/SignupPage';
 
 import { addPost, getUserPosts, removePost } from './actions/PostListActions';
 import { addUser, removeUser, getUser } from './actions/UserListActions';
@@ -32,6 +33,7 @@ class App extends React.Component {
     this.removeUser = removeUser.bind(this);
     this.getUser = getUser.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
   }
 
   componentDidMount() {
@@ -74,9 +76,18 @@ class App extends React.Component {
     const user = this.getUser(username);
     if(user) {
       const loginStatus = user.verifyPassword(password);
-      this.setState({loggedIn: loginStatus});
+      this.setState({
+        loggedIn: loginStatus,
+        currentUser: user
+      });
     }
     return this.state.loggedIn;
+  }
+
+  handleSignup(user) {
+    if(this.getUser(user.username) == null) {
+      this.addUser(user);
+    }
   }
 
   render() {
@@ -104,6 +115,17 @@ class App extends React.Component {
                               currentUser={this.state.currentUser}
                               addPost={this.addPost}
                             />)}/>
+
+        <Route
+          exact path='/signup'
+          render={
+            () => (
+              <SignupPage 
+                handleSignup={this.handleSignup}
+              />
+            )
+          }
+        />
         
         </Switch>
        </BrowserRouter>

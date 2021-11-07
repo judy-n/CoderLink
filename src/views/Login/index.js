@@ -27,10 +27,9 @@ class Login extends React.Component {
         <div className="loginPage">
 
             <Header/>
-            <h2>Welcome! Please login.</h2>
+            <h2>Welcome! Please Login</h2>
             <div className="loginForm">
                 <TextField 
-                required
                 label="Username" id="filled-basic"
                 onChange= {(e) => this.setState({username: e.target.value})}
                 />
@@ -40,14 +39,25 @@ class Login extends React.Component {
                 type="password"
                 onChange= {(e) => this.setState({password: e.target.value})}
                 />
-
-                <Button 
-                    onClick={this.handleLogin}
-                    variant ="contained" 
-                    className="loginButton"
-                >
-                    Login
-                </Button>
+                <div className='loginForm-buttons'>
+                    <Button 
+                        onClick={this.handleLogin}
+                        variant ="contained" 
+                        className="about-btn blue loginButton"
+                    >
+                        Login
+                    </Button>
+                    <Button
+                        variant="contained"
+                        className='about-btn green signup-button'
+                    >
+                        <Link
+                            to='/signup'
+                        >
+                            Sign Up
+                        </Link>
+                    </Button>
+                </div>
             </div>
             {
                 (this.props.loggedIn)

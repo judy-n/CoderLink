@@ -1,5 +1,5 @@
 export function addUser(user) {
-    const newList = this.props.userList;
+    const newList = this.state.userList;
     newList.push(user);
     this.setState({
         userList: newList

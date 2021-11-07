@@ -1,0 +1,41 @@
+.signup-page-container {
+    display: grid;
+    place-items: center;
+}
+
+.signup-page-container h2 {
+    color: #4b4b4b;
+    margin-top: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 25vw;
+}
+
+.signup-form .field-short {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-form .MuiTextField-root {
+    color: black;
+    background-color: white;
+    margin: 7px;
+    border-radius: 7px;
+}
+
+.signup-form .MuiButton-root {
+    width: 50%;
+    place-self: center;
+    margin-top: 1rem;
+}
+
+.signup-form .MuiButton-root a {
+    color: white;
+    text-decoration: none;
+    width: 100%;
+}

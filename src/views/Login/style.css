@@ -12,10 +12,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .loginPage h2 {
+  color: #4b4b4b;
   margin-top: 100px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 }
 
 .loginForm .MuiTextField-root {
@@ -23,14 +27,21 @@
   background-color: white;
   margin: 5px;
   border-radius: 7px;
+  margin: 0.5rem;
 }
 
-.MuiButton-root.loginButton {
-  background-color: #184e77;
-  margin: 5px;
+.loginForm-buttons {
+  display: flex;
+  margin: 1rem;
 }
 
-.MuiButton-root.loginButton a {
+.loginForm-buttons .MuiButton-root {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  width: 5rem;
+}
+
+.MuiButton-root a {
   color: white;
   width: 100%;
   text-decoration: none;
