@@ -98,6 +98,7 @@ class App extends React.Component {
                               addPost = {this.addPost}
                               currentUsername = {this.state.currentUser.username}
                               isAdmin = {this.state.currentUser.userType === 'admin'}
+                              removePost = {this.removePost}
                               />
                             )}/>
         <Route exact path='/profile' render={() => 

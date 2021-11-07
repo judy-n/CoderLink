@@ -9,6 +9,10 @@ import coffee from './static/coffee.jpg'
 import PostEntity from '../../model/Post';
 
 class PostList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div>
@@ -28,6 +32,8 @@ class PostList extends React.Component {
                                 institution = {post.institutions[0]}
                                 currentUsername = {this.props.currentUsername}
                                 isAdmin = {this.props.isAdmin}
+                                removePost = {this.props.removePost}
+                                post = {post}
                             />
                         );
                     })}

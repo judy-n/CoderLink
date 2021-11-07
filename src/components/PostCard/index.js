@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography'
 class PostCard extends React.Component {
     constructor(props) {
         super(props);
+        this.handleDelete = this.handleDelete.bind(this);
         this.state = {
             username: this.props.username,
             projectTitle: this.props.projectTitle,
@@ -20,6 +21,10 @@ class PostCard extends React.Component {
             isAdmin: this.props.isAdmin,
             currentUsername: this.props.currentUsername
         }
+    }
+
+    handleDelete() {
+        this.props.removePost(this.props.post);
     }
 
     render() {
@@ -59,7 +64,7 @@ class PostCard extends React.Component {
                             <Button className="view-more-btn" variant ="contained" size="small">View More</Button>
                             {
                                 (this.props.isAdmin || (this.props.currentUsername === this.props.username)) &&
-                                <Button className="view-more-btn" variant ="contained" size="small">Delete</Button>
+                                <Button className="view-more-btn" variant ="contained" size="small" onClick={this.handleDelete}>Delete</Button>
                             }
                         </div>
                     </CardActions>
