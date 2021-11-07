@@ -21,8 +21,8 @@ class UserEntity {
         this.institution = institution;
     }
 
-    verifyCredentials(username, password) {
-        return((this.username === username && this.password === password));
+    verifyPassword(password) {
+        return(this.password === password);
     }
 }
 
