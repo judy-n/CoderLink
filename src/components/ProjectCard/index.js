@@ -31,13 +31,13 @@ class ProjectCard extends React.Component {
         return (<div>
 
 <div className="port-proj-card">
-                <Card>
+                <Card id="projCard">
                     <CardMedia
                         component="img"
                         image={this.state.banner}
                         height="140"
                    />
-                   <CardContent>
+                   <CardContent id="projCardCont">
                     <Typography gutterBottom variant="h5" component="div">
                     {this.state.title}
                     </Typography>

@@ -34,7 +34,8 @@ class Portfolio extends React.Component {
             <div className="port-profile">
                 <img src={profilepic}></img>
                 <div className="port-name">
-                <h4>{this.state.name}</h4>
+                <Typography gutterBottom variant="h6" component="div" id="portName">{this.state.name}</Typography>
+                {/* <h4>{this.state.name}</h4> */}
                 <div className="port-icons">
                 <a href="#"><img src={github}></img></a>
                 <a href="#"><img src={resume}></img></a>

@@ -4,7 +4,7 @@
 }
 
 .port-sidebar {
-  background-color: rgb(236, 250, 255);
+  background-color: rgb(223, 236, 247);
   height: 800px;
   display: flex;
   justify-content: center;
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   margin-top: 2rem;
   border-radius: 10px;
@@ -35,6 +35,10 @@
   font-family: "Arial", sans-serif;
 }
 
+#portName {
+  margin-top: 0.5rem;
+}
+
 .port-icons img {
   width: 40px;
   height: 40px;
@@ -43,7 +47,7 @@
 .port-icons {
   display: flex;
   column-gap: 0.5rem;
-  background-color: rgb(193, 215, 222);
+  background-color: rgb(193, 209, 222);
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
@@ -52,4 +56,12 @@
 .port-proj-card {
   margin: 3rem;
   height: 200px;
+}
+
+#projCard {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+#projCardCont {
+  border-top: solid 1rem rgb(193, 209, 222);
 }
