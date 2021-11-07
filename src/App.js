@@ -9,6 +9,7 @@ import Post from './views/posts/index';
 import Portfolio from './views/Portfolio';
 import NewPostPage from './views/newPostPage';
 import UserEntity from './model/User';
+import EditProfile from './views/editProfile';
 
 import { addPost, getUserPosts, removePost } from './actions/PostListActions';
 import { addUser, removeUser, getUser } from './actions/UserListActions';
@@ -76,7 +77,16 @@ class App extends React.Component {
                               currentUser={this.state.currentUser}
                               addPost={this.addPost}
                             />)}/>
-        
+
+        <Route exact path='/editProfile' render={() =>
+                            (<EditProfile
+                              username="judy-n"
+                              name="Judy Naamani" 
+                              bio="Hi I'm a silly goose!"
+                              institution= "University of Toronto"
+                              skills= {["Python", "Java"]}
+
+                            />)}/>
         </Switch>
        </BrowserRouter>
       </div>
