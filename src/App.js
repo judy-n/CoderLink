@@ -9,6 +9,7 @@ import Post from './views/posts/index';
 import Portfolio from './views/Portfolio';
 import NewPostPage from './views/newPostPage';
 import UserEntity from './model/User';
+import EditProfile from './views/editProfile';
 import PostEntity from './model/Post';
 import SignupPage from './views/SignupPage';
 
@@ -116,6 +117,7 @@ class App extends React.Component {
                               addPost={this.addPost}
                             />)}/>
 
+<<<<<<< HEAD
         <Route
           exact path='/signup'
           render={
@@ -127,6 +129,17 @@ class App extends React.Component {
           }
         />
         
+=======
+        <Route exact path='/editProfile' render={() =>
+                            (<EditProfile
+                              username="judy-n"
+                              name="Judy Naamani" 
+                              bio="Hi I'm a silly goose!"
+                              institution= "University of Toronto"
+                              skills= {["Python", "Java"]}
+
+                            />)}/>
+>>>>>>> ccff8b20b34487d03b92ffb6e650658b0fd08874
         </Switch>
        </BrowserRouter>
       </div>

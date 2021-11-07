@@ -1,0 +1,17 @@
+.edit-profile-form-container {
+  display: grid;
+  place-items: center;
+}
+
+.edit-profile-form {
+  background-color: rgb(242, 242, 242);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 10px;
+  width: 500px;
+  padding: 2rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+}

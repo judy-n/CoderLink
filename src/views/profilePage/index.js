@@ -7,6 +7,8 @@ import Header from '../../components/Header';
 import PostThumbnail from "../../components/PostThumbnail"
 import pixel from './static/pixel.png'
 import coffee from './static/coffee.jpg'
+import IconButton from '@mui/material/IconButton'
+import SettingsIcon from '@mui/icons-material/Settings';
 
 class Profile extends React.Component {
 
@@ -29,6 +31,7 @@ class Profile extends React.Component {
         
         <span className="user"><h1>@{this.state.username}</h1></span>
         
+        
         <div className='ProfileCard'>
             {/* Profile pic */}
             <img src={profilepic} alt=""></img>
@@ -38,8 +41,17 @@ class Profile extends React.Component {
                 <h3>Institution: <span className="ProfileContent">{this.state.institution}</span></h3>
                 <h3>Skills: {this.state.skills.map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
                 <div className="about-buttons-profile">
-                  <Button variant ="contained" className="about-btn blue">Connect</Button>
+                    <div>
+                    <Button variant ="contained" className="about-btn blue">Connect</Button>
                   <Button href="portfolio" variant="contained" className="about-btn green">Portfolio</Button>
+                    </div>
+
+                  <div>
+                  <IconButton>
+                <SettingsIcon/>
+                </IconButton>
+                  </div>
+                  
                 </div>
             </div>
         </div>
