@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 import Profile from './views/profilePage/index';
 import Home from './views/Home';
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.getUser = getUser.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
 
     const newUser = new UserEntity('admin', 'admin');
     newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
@@ -80,6 +82,13 @@ class App extends React.Component {
     return this.state.loggedIn;
   }
 
+  handleLogout() {
+    this.setState({
+      currentUser: null,
+      loggedIn: false
+    })
+  }
+
   handleSignup(user) {
     if(this.getUser(user.username) == null) {
       this.addUser(user);
@@ -92,13 +101,19 @@ class App extends React.Component {
         <BrowserRouter>
         <Switch>
         
-        <Route exact path='/' render={() => 
+        <Route
+          exact path='/'
+          render={() => (<Redirect to='/login'/>)}
+        />
+        
+        <Route exact path='/home' render={() => 
                             (<Home 
                               postList = {this.state.postList} 
                               addPost = {this.addPost}
                               currentUsername = {this.state.currentUser.username}
                               isAdmin = {this.state.currentUser.userType === 'admin'}
                               removePost = {this.removePost}
+                              handleLogout = {this.handleLogout}
                               />
                             )}/>
         <Route exact path='/profile' render={() => 

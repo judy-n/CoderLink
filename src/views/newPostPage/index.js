@@ -68,7 +68,7 @@ class NewPostPage extends React.Component {
                         type="submit"
                         onClick={this.handleSubmit.bind(this)}
                     >
-                        <Link to='/'>
+                        <Link to='/home'>
                             Create Post
                         </Link>
                     </Button>
