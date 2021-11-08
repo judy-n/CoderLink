@@ -34,6 +34,7 @@ class PostList extends React.Component {
                                 isAdmin = {this.props.isAdmin}
                                 removePost = {this.props.removePost}
                                 post = {post}
+                                changeCurrentPost = {this.props.changeCurrentPost}
                             />
                         );
                     })}
