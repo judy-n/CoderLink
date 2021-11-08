@@ -16,3 +16,6 @@
 * Search for posts on the home page
 * Connect to other users
 * User can add items to their portfolio
+
+## Current bug
+* On using the modify profile setting on a regular user it somehow changes the user into an admin
