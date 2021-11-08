@@ -9,16 +9,18 @@ import banner from './static/banner.jpg';
 
 
 class Post extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     
     state = {
-        // State variables that will be used as dummy placeholders
-        poster_username: "cecil_c",
-        institution: "UofT",
-        postTitle: "A Latin Compilation Project",
-        datePosted: "October 28, 2021"
+        poster_username: this.props.currentPost.author,
+        institution: this.props.currentPost.institutions[0],
+        postTitle: this.props.currentPost.title,
     }
     
     render() {
+        console.log(this.props)
         return (
             <div className="postPage">
                 <Header/>

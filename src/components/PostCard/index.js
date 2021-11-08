@@ -5,12 +5,14 @@ import Card from "@mui/material/Card";
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography'
+import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
 
 class PostCard extends React.Component {
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handlePostChange = this.handlePostChange.bind(this);
         this.state = {
             username: this.props.username,
             projectTitle: this.props.projectTitle,
@@ -25,6 +27,10 @@ class PostCard extends React.Component {
 
     handleDelete() {
         this.props.removePost(this.props.post);
+    }
+
+    handlePostChange() {
+        this.props.changeCurrentPost(this.props.post);
     }
 
     render() {
@@ -61,7 +67,9 @@ class PostCard extends React.Component {
                     <CardActions className="card-bottom">
                         <h2>{this.state.skills.map((skill, i) => <span className="thumbBadge" key={i}>{skill}</span>)}</h2>
                         <div className='card-bottom-buttons'>
-                            <Button className="view-more-btn" variant ="contained" size="small">View More</Button>
+                            <Button className="view-more-btn" variant ="contained" size="small" onClick={this.handlePostChange}>
+                                <Link to='/post'>View More</Link>
+                            </Button>
                             {
                                 (this.props.isAdmin || (this.props.currentUsername === this.props.username)) &&
                                 <Button className="view-more-btn" variant ="contained" size="small" onClick={this.handleDelete}>Delete</Button>

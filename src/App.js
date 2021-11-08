@@ -29,6 +29,7 @@ class App extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.changeCurrentPost = this.changeCurrentPost.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
 
     const newUser = new UserEntity('admin', 'admin');
@@ -67,7 +68,8 @@ class App extends React.Component {
       postList: [newPost1, newPost2, newPost3],
       userList: [newUser],
       currentUser: newUser,
-      loggedIn: false
+      loggedIn: false,
+      currentPost: null
     }
   }
 
@@ -96,6 +98,12 @@ class App extends React.Component {
     }
   }
 
+  changeCurrentPost(post) {
+    this.setState({
+      currentPost: post
+    });
+  }
+  
   updateProfile(new_user, new_name, new_bio, new_inst, new_skills) 
      {
          const newUser = this.state.currentUser
@@ -132,6 +140,7 @@ class App extends React.Component {
                               isAdmin = {this.state.currentUser.userType === 'admin'}
                               removePost = {this.removePost}
                               handleLogout = {this.handleLogout}
+                              changeCurrentPost={this.changeCurrentPost}
                               />
                             )}/>
         <Route exact path='/profile' render={() => 
@@ -151,7 +160,9 @@ class App extends React.Component {
                               loggedIn={this.state.loggedIn}
                             />)}/>
         <Route exact path='/post' render={() => 
-                            (<Post/>)}/>
+                            (<Post
+                              currentPost={this.state.currentPost}
+                            />)}/>
         
         <Route exact path='/portfolio' render={() => 
                             (<Portfolio/>)}/>
