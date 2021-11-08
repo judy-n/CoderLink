@@ -13,6 +13,7 @@ import UserEntity from './model/User';
 import EditProfile from './views/editProfile';
 import PostEntity from './model/Post';
 import SignupPage from './views/SignupPage';
+import PostPage from './views/PostPage';
 
 import { addPost, getUserPosts, removePost } from './actions/PostListActions';
 import { addUser, removeUser, getUser } from './actions/UserListActions';
@@ -160,7 +161,7 @@ class App extends React.Component {
                               loggedIn={this.state.loggedIn}
                             />)}/>
         <Route exact path='/post' render={() => 
-                            (<Post
+                            (<PostPage
                               currentPost={this.state.currentPost}
                             />)}/>
         
@@ -189,6 +190,7 @@ class App extends React.Component {
                               updateProfile = {this.updateProfile}
                             />)}/>
         </Switch>
+
        </BrowserRouter>
       </div>
     );

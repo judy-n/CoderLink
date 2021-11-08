@@ -1,0 +1,30 @@
+.postpage-container {
+  display: grid;
+  place-items: center;
+}
+
+.postpage-post {
+  margin-top: 5rem;
+  display: flex;
+  /* background-color: lightsteelblue; */
+}
+
+.postpage-postcontent {
+  width: 700px;
+  background-color: lightsteelblue;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postpage-postcontent img {
+  width: 700px;
+}
+
+.postpage-desc {
+  margin: 2rem;
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+}
