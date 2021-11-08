@@ -21,7 +21,17 @@ class Profile extends React.Component {
         // postList: this.state.UserPostList
     }
 
-
+    updateProfile(new_user, new_name, new_bio, new_inst, new_skills) 
+     {
+         this.setState({
+            username: new_user,
+            name: new_name,
+            bio: new_bio,
+            institution: new_inst,
+            skills: new_skills
+         })
+       
+    }
 
 
     render() { 
@@ -47,7 +57,9 @@ class Profile extends React.Component {
                     </div>
 
                   <div>
-                  <IconButton>
+                  <IconButton
+                  href="/editProfile"
+                  >
                 <SettingsIcon/>
                 </IconButton>
                   </div>
