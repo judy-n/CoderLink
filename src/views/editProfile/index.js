@@ -23,7 +23,7 @@ class EditProfile extends React.Component {
 
     handleSubmit(event) {
         this.props.updateProfile(this.state.username, this.state.name, this.state.bio, this.state.institution, 
-            this.state.skills)
+            this.state.skills.split(","))
     }
 
     render() { 
