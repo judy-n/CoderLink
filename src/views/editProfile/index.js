@@ -15,7 +15,7 @@ class EditProfile extends React.Component {
             name: this.props.currentUser.name,
             bio: this.props.currentUser.bio,
             institution: this.props.currentUser.institution,
-            skills: this.props.currentUser.skills,
+            skills: this.props.currentUser.skills.join(","),
         }
 
     }
