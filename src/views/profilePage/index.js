@@ -9,29 +9,29 @@ import pixel from './static/pixel.png'
 import coffee from './static/coffee.jpg'
 import IconButton from '@mui/material/IconButton'
 import SettingsIcon from '@mui/icons-material/Settings';
+import Link from '@mui/material/Link'
+// import { Link } from 'react-router-dom';
+import EditProfile from '../editProfile';
 
 class Profile extends React.Component {
 
-    state = { // we will load data into state variables
-        username: "judy-n",
-        name: "Judy Naamani",
-        bio: "Hi I'm a silly goose!",
-        institution: "University of Toronto",
-        skills: ["Python", "Java"],
-        // postList: this.state.UserPostList
+    constructor(props) {
+        super(props)
+        this.state = { // we will load data into state variables
+        // username: "judy-n",
+        // name: "Judy Naamani",
+        // bio: "Hi I'm a silly goose!",
+        // institution: "University of Toronto",
+        // skills: ["Python", "Java"],
+        // // postList: this.state.UserPostList
+        username: this.props.username,
+        name: this.props.name,
+        bio: this.props.bio,
+        institution: this.props.institution,
+        skills: this.props.skills
     }
+}
 
-    updateProfile(new_user, new_name, new_bio, new_inst, new_skills) 
-     {
-         this.setState({
-            username: new_user,
-            name: new_name,
-            bio: new_bio,
-            institution: new_inst,
-            skills: new_skills
-         })
-       
-    }
 
 
     render() { 
@@ -60,6 +60,7 @@ class Profile extends React.Component {
                   <IconButton
                   href="/editProfile"
                   >
+                  
                 <SettingsIcon/>
                 </IconButton>
                   </div>

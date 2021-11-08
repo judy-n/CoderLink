@@ -29,6 +29,7 @@ class App extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.updateProfile = this.updateProfile.bind(this);
 
     const newUser = new UserEntity('admin', 'admin');
     newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
@@ -95,6 +96,23 @@ class App extends React.Component {
     }
   }
 
+  updateProfile(new_user, new_name, new_bio, new_inst, new_skills) 
+     {
+         const newUser = this.state.currentUser
+         newUser.username = new_user
+         newUser.name = new_name
+         newUser.about = new_bio
+         newUser.institution = new_inst
+         newUser.skills = new_skills
+         
+         this.setState ({
+           currentUser: newUser
+         })
+
+       
+    }
+
+
   render() {
     return(
       <div>
@@ -117,7 +135,16 @@ class App extends React.Component {
                               />
                             )}/>
         <Route exact path='/profile' render={() => 
-                            (<Profile/>)}/>
+                            (<Profile
+                            
+                              username={this.state.currentUser.username}
+                              name={this.state.currentUser.name}
+                              bio={this.state.currentUser.about}
+                              institution= {this.state.currentUser.institution}
+                              skills= {this.state.currentUser.skills}
+                      
+                            
+                            />)}/>
         <Route exact path='/login' render={() => 
                             (<Login
                               handleLogin={this.handleLogin}
@@ -147,12 +174,8 @@ class App extends React.Component {
         
         <Route exact path='/editProfile' render={() =>
                             (<EditProfile
-                              username="judy-n"
-                              name="Judy Naamani" 
-                              bio="Hi I'm a silly goose!"
-                              institution= "University of Toronto"
-                              skills= {["Python", "Java"]}
-
+                              currentUser={this.state.currentUser}
+                              updateProfile = {this.updateProfile}
                             />)}/>
         </Switch>
        </BrowserRouter>

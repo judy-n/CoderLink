@@ -9,19 +9,19 @@ class EditProfile extends React.Component {
 
     constructor(props) {
         super(props);
-        
         this.state = {
-            username: this.props.username,
-            name: this.props.name,
-            bio: this.props.bio,
-            institution: this.props.institution,
-            skills: this.props.skills,
+            currentUser: this.props.currentUser,
+            username: this.props.currentUser.username,
+            name: this.props.currentUser.name,
+            bio: this.props.currentUser.bio,
+            institution: this.props.currentUser.institution,
+            skills: this.props.currentUser.skills,
         }
 
     }
 
     handleSubmit(event) {
-        this.props.updateProfile(this.state.username, this.state.name, this.state.bio, this.state.institution, this.state.skills)
+        this.props.updateProfile(this.state.username, this.state.name, this.state.bio, this.state.institution, this.state.skills.split(","))
     }
 
     render() { 
