@@ -16,14 +16,14 @@ class EditProfile extends React.Component {
             name: this.props.currentUser.name,
             bio: this.props.currentUser.bio,
             institution: this.props.currentUser.institution,
-            skills: this.props.currentUser.skills.join(","),
+            skills: this.props.currentUser.skills,
         }
 
     }
 
     handleSubmit(event) {
         this.props.updateProfile(this.state.username, this.state.name, this.state.bio, this.state.institution, 
-            this.state.skills.split(","))
+            this.state.skills)
     }
 
     render() { 
