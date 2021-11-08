@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import './style.css'
 import UserEntity from '../../model/User';
+import { Link } from 'react-router-dom';
 
 class EditProfile extends React.Component {
 
@@ -21,7 +22,8 @@ class EditProfile extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.updateProfile(this.state.username, this.state.name, this.state.bio, this.state.institution, this.state.skills.split(","))
+        this.props.updateProfile(this.state.username, this.state.name, this.state.bio, this.state.institution, 
+            this.state.skills)
     }
 
     render() { 
@@ -69,7 +71,7 @@ class EditProfile extends React.Component {
             label="Skills"
             defaultValue={this.state.skills}
             helperText="Comma seperated"
-            onChange={(e) => this.setState({skills: e.target.value})}
+            onChange={(e) => this.setState({skills: e.target.value.split(",")})}
             />  
 
             <Button
@@ -77,10 +79,18 @@ class EditProfile extends React.Component {
             type='submit'
             onClick={this.handleSubmit.bind(this)}
             > Save
-
-
-
             </Button>
+            
+            <Button 
+            variant='contained'>
+            <Link to='/profile'>Go back
+                 </Link>
+            </Button>
+            
+           
+            
+           
+
 
 
 
