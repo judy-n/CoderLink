@@ -61,7 +61,7 @@ class Login extends React.Component {
             </div>
             {
                 (this.props.loggedIn)
-                ? (<Redirect push to='/' />)
+                ? (<Redirect to='/' />)
                 : null
             }
 
