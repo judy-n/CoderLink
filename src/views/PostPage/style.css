@@ -6,12 +6,11 @@
 .postpage-post {
   margin-top: 5rem;
   display: flex;
-  /* background-color: lightsteelblue; */
 }
 
 .postpage-postcontent {
   width: 700px;
-  background-color: rgb(223, 236, 247);
+  background-color: white;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 10px;
   padding: 2rem;
@@ -27,7 +26,7 @@
 .postpage-desc {
   margin: 2rem;
   padding: 1rem;
-  background-color: rgb(193, 209, 222);
+  background-color: rgb(239, 239, 239);
   width: 100%;
   border-radius: 10px;
 }

@@ -17,13 +17,7 @@ class Profile extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { // we will load data into state variables
-        // username: "judy-n",
-        // name: "Judy Naamani",
-        // bio: "Hi I'm a silly goose!",
-        // institution: "University of Toronto",
-        // skills: ["Python", "Java"],
-        // // postList: this.state.UserPostList
+        this.state = { 
         username: this.props.username,
         name: this.props.name,
         bio: this.props.bio,
