@@ -9,8 +9,8 @@ import pixel from './static/pixel.png'
 import coffee from './static/coffee.jpg'
 import IconButton from '@mui/material/IconButton'
 import SettingsIcon from '@mui/icons-material/Settings';
-import Link from '@mui/material/Link'
-// import { Link } from 'react-router-dom';
+import LinkK from '@mui/material/Link'
+import { Link } from 'react-router-dom';
 import EditProfile from '../editProfile';
 
 class Profile extends React.Component {
@@ -57,12 +57,15 @@ class Profile extends React.Component {
                     </div>
 
                   <div>
+                    <Link to="/editProfile">
                   <IconButton
-                  href="/editProfile"
                   >
+
                   
-                <SettingsIcon/>
+                <SettingsIcon/> 
                 </IconButton>
+                </Link>
+                {/* <Link to="/editProfile">meow</Link> */}
                   </div>
                   
                 </div>

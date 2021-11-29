@@ -14,7 +14,7 @@ class EditProfile extends React.Component {
             currentUser: this.props.currentUser,
             username: this.props.currentUser.username,
             name: this.props.currentUser.name,
-            bio: this.props.currentUser.bio,
+            bio: this.props.currentUser.about,
             institution: this.props.currentUser.institution,
             skills: this.props.currentUser.skills,
         }

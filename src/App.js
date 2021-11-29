@@ -33,13 +33,13 @@ class App extends React.Component {
     this.changeCurrentPost = this.changeCurrentPost.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
 
-    const newUser = new UserEntity('admin', 'admin');
-    newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
-    newUser.userType = 'admin';
-    this.setState({
-      userList: [newUser],
-      currentUser: newUser
-    });
+    // const newUser = new UserEntity('admin', 'admin');
+    // newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
+    // newUser.userType = 'admin';
+    // this.setState({
+    //   userList: [],
+    //   currentUser: null
+    // });
     const newPost1 = new PostEntity('admin');
     newPost1.addInformation(
       'Recommender system for cafes',
@@ -67,8 +67,8 @@ class App extends React.Component {
     
     this.state = {
       postList: [newPost1, newPost2, newPost3],
-      userList: [newUser],
-      currentUser: newUser,
+      userList: [],
+      currentUser: null,
       loggedIn: false,
       currentPost: null
     }
