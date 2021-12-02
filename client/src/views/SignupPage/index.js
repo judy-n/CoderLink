@@ -3,7 +3,7 @@ import './style.css';
 import { Link } from 'react-router-dom';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import UserEntity from '../../model/User';
+// import UserEntity from '../../../model/User';
 
 class SignupPage extends React.Component {
     constructor(props) {
@@ -11,27 +11,26 @@ class SignupPage extends React.Component {
     }
 
     state = {
-        name: '',
+        fullname: '',
         username: '',
         password: '',
-        age: -1,
-        pronouns: '',
         about: '',
         institution: '',
         skills: ''
     }
 
     handleSubmit() {
-        const newUser = new UserEntity(this.state.username, this.state.password);
-        newUser.addInformation(
-            this.state.name,
-            this.state.age,
-            this.state.pronouns,
-            this.state.about,
-            this.state.skills.split(', '),
-            this.state.institution
-        )
-        this.props.handleSignup(newUser);
+        // const newUser = new UserEntity(this.state.username, this.state.password);
+        // newUser.addInformation(
+        //     this.state.name,
+        //     this.state.age,
+        //     this.state.pronouns,
+        //     this.state.about,
+        //     this.state.skills.split(', '),
+        //     this.state.institution
+        // )
+        this.props.handleSignup(this.state.username, this.state.password, this.state.fullname, this.state.about, 
+            this.state.skills, this.state.institution);
     }
 
     render() {
@@ -42,7 +41,7 @@ class SignupPage extends React.Component {
                     <TextField
                         variant="outlined"
                         label="Full name"
-                        onChange={(e) => this.setState({name: e.target.value})}
+                        onChange={(e) => this.setState({fullname: e.target.value})}
                     />
                     <TextField
                         variant="outlined"
@@ -55,7 +54,7 @@ class SignupPage extends React.Component {
                         type='password'
                         onChange={(e) => this.setState({password: e.target.value})}
                     />
-                    <div className='field-short'>
+                    {/* <div className='field-short'>
                         <TextField
                             variant="outlined"
                             label="age"
@@ -66,7 +65,7 @@ class SignupPage extends React.Component {
                             label="Pronouns"
                             onChange={(e) => this.setState({pronouns: e.target.value})}
                         />
-                    </div>
+                    </div> */}
                     <TextField
                         variant="outlined"
                         label="about"

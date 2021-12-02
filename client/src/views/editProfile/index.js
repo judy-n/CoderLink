@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import './style.css'
-import UserEntity from '../../model/User';
+// import UserEntity from '../../../model/User';
 import { Link } from 'react-router-dom';
 
 class EditProfile extends React.Component {
@@ -13,17 +13,32 @@ class EditProfile extends React.Component {
         this.state = {
             currentUser: this.props.currentUser,
             username: this.props.currentUser.username,
-            name: this.props.currentUser.name,
-            bio: this.props.currentUser.about,
+            name: this.props.currentUser.fullname,
+            about: this.props.currentUser.about,
             institution: this.props.currentUser.institution,
             skills: this.props.currentUser.skills,
         }
 
     }
 
-    handleSubmit(event) {
-        this.props.updateProfile(this.state.username, this.state.name, this.state.bio, this.state.institution, 
-            this.state.skills)
+    componentDidUpdate(prevProps) {
+        if (prevProps.currentUser != this.props.currentUser) {
+            this.setState({
+                currentUser: this.props.currentUser,
+                username: this.props.currentUser.username,
+                name: this.props.currentUser.fullname,
+                about: this.props.currentUser.about,
+                institution: this.props.currentUser.institution,
+                skills: this.props.currentUser.skills,
+                })
+        }
+    }
+
+    async handleSubmit(event) {
+        console.log("editprofile passes in:", this.state.username, this.state.name, this.state.about, 
+        this.state.skills, this.state.institution)
+        await this.props.editProfile(this.state.username, this.state.name, this.state.about, 
+            this.state.skills, this.state.institution)
     }
 
     render() { 
@@ -55,8 +70,8 @@ class EditProfile extends React.Component {
             <TextField
             id="outlined-helperText"
             label="Bio"
-            defaultValue={this.state.bio}
-            onChange={(e) => this.setState({bio: e.target.value})}
+            defaultValue={this.state.about}
+            onChange={(e) => this.setState({about: e.target.value})}
             />  
 
             <TextField

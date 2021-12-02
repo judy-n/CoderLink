@@ -2,7 +2,7 @@ import React from "react";
 import './style.css';
 import { Button, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import PostEntity from "../../model/Post";
+// import PostEntity from "../../../model/Post";
 import { Link } from "react-router-dom";
 
 class ToolBar extends React.Component {

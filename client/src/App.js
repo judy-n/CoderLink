@@ -9,29 +9,32 @@ import Login from './views/Login'
 import Post from './views/posts/index';
 import Portfolio from './views/Portfolio';
 import NewPostPage from './views/newPostPage';
-import UserEntity from './model/User';
+// import UserEntity from '../../model/User';
 import EditProfile from './views/editProfile';
-import PostEntity from './model/Post';
+// import PostEntity from '../../model/Post';
 import SignupPage from './views/SignupPage';
 import PostPage from './views/PostPage';
 
-import { addPost, getUserPosts, removePost } from './actions/PostListActions';
-import { addUser, removeUser, getUser } from './actions/UserListActions';
+// import { addPost, getUserPosts, removePost } from './actions/PostListActions';
+// import { addUser, removeUser, getUser } from './actions/UserListActions';
+
+import { checkSession, login, signup, getUser, editUser} from "./actions/user";
 
 class App extends React.Component {
+
   constructor(props) {
     super(props);
-    this.addPost = addPost.bind(this);
-    this.getUserPosts = getUserPosts.bind(this);
-    this.removePost = removePost.bind(this);
-    this.addUser = addUser.bind(this);
-    this.removeUser = removeUser.bind(this);
-    this.getUser = getUser.bind(this);
+    // this.addPost = addPost.bind(this);
+    // this.getUserPosts = getUserPosts.bind(this);
+    // this.removePost = removePost.bind(this);
+    // this.addUser = addUser.bind(this);
+    // this.removeUser = removeUser.bind(this);
+    // this.getUser = getUser.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.changeCurrentPost = this.changeCurrentPost.bind(this);
-    this.updateProfile = this.updateProfile.bind(this);
+    this.editProfile = this.editProfile.bind(this);
 
     // const newUser = new UserEntity('admin', 'admin');
     // newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
@@ -40,63 +43,95 @@ class App extends React.Component {
     //   userList: [],
     //   currentUser: null
     // });
-    const newPost1 = new PostEntity('admin');
-    newPost1.addInformation(
-      'Recommender system for cafes',
-      'Using machine mearning to recommend cafes to users based on their previous choices',
-      '',
-      'University of Toronto',
-      ['Python', 'Deep learning']
-    );
-    const newPost2 = new PostEntity('johnny');
-    newPost2.addInformation(
-      'A game engine in C',
-      'Designing a game engine which would provide anime style physics for a game I am working on',
-      '',
-      'University of Toronto',
-      ['C', 'Linear algebra', 'Vector calculus']
-      );
-    const newPost3 = new PostEntity('chloe');
-    newPost3.addInformation(
-      'An application to support the underprivileged',
-      'We need a flutter developer for our application which aims to help the homeless and needy',
-      '',
-      'University of Waterloo',
-      ['Flutter', 'Figma']
-    );
+  //   const newPost1 = new PostEntity('admin');
+  //   newPost1.addInformation(
+  //     'Recommender system for cafes',
+  //     'Using machine mearning to recommend cafes to users based on their previous choices',
+  //     '',
+  //     'University of Toronto',
+  //     ['Python', 'Deep learning']
+  //   );
+  //   const newPost2 = new PostEntity('johnny');
+  //   newPost2.addInformation(
+  //     'A game engine in C',
+  //     'Designing a game engine which would provide anime style physics for a game I am working on',
+  //     '',
+  //     'University of Toronto',
+  //     ['C', 'Linear algebra', 'Vector calculus']
+  //     );
+  //   const newPost3 = new PostEntity('chloe');
+  //   newPost3.addInformation(
+  //     'An application to support the underprivileged',
+  //     'We need a flutter developer for our application which aims to help the homeless and needy',
+  //     '',
+  //     'University of Waterloo',
+  //     ['Flutter', 'Figma']
+  //   );
     
     this.state = {
-      postList: [newPost1, newPost2, newPost3],
+      postList: [],
       userList: [],
-      currentUser: null,
+      currentUser: {
+        username: null,
+        fullname: null,
+        about: null,
+        skills: null,
+        institution: null,
+        userType: null,
+      },
       loggedIn: false,
       currentPost: null
     }
   }
 
-  handleLogin(username, password) {
-    const user = this.getUser(username);
+  async componentDidMount() {
+    const username = await checkSession(this); // sees if a user is logged in
+    console.log("APP.js passing in", username)
+    const user = await getUser(username)
+    console.log('makhadde', user)
+    this.setState({
+      currentUser: {
+        username: user.username,
+        fullname: user.fullname,
+        about: user.about,
+        skills: user.skills,
+        institution: user.institution,
+        userType: user.userType,
+      }
+    })
+  }
+
+  async handleLogin(username, password) {
+    console.log("Sending", username, password)
+    const user = await login({username, password})
+    console.log('response', user)
     if(user) {
-      const loginStatus = user.verifyPassword(password);
       this.setState({
-        loggedIn: loginStatus,
-        currentUser: user
-      });
+        loggedIn: true,
+        currentUser: user,
+      })
+      return true
     }
-    return this.state.loggedIn;
+    return false;
   }
 
   handleLogout() {
     this.setState({
-      currentUser: null,
+      currentUser: {
+        username: null,
+        fullname: null,
+        about: null,
+        skills: null,
+        institution: null,
+        userType: null,
+      },
       loggedIn: false
     })
+
   }
 
-  handleSignup(user) {
-    if(this.getUser(user.username) == null) {
-      this.addUser(user);
-    }
+  async handleSignup(username, password, fullname, about, skills, institution) {
+    const user = await signup(username, password, fullname, about, skills, institution)
   }
 
   changeCurrentPost(post) {
@@ -105,24 +140,34 @@ class App extends React.Component {
     });
   }
   
-  updateProfile(new_user, new_name, new_bio, new_inst, new_skills) 
-     {
-         const newUser = this.state.currentUser
-         newUser.username = new_user
-         newUser.name = new_name
-         newUser.about = new_bio
-         newUser.institution = new_inst
-         newUser.skills = new_skills
+  // updateProfile(new_user, new_name, new_bio, new_inst, new_skills) 
+  //    {
+  //        const newUser = this.state.currentUser
+  //        newUser.username = new_user
+  //        newUser.name = new_name
+  //        newUser.about = new_bio
+  //        newUser.institution = new_inst
+  //        newUser.skills = new_skills
          
-         this.setState ({
-           currentUser: newUser
-         })
+  //        this.setState ({
+  //          currentUser: newUser
+  //        })
 
        
-    }
+  //   }
 
+  async editProfile(username, new_name, new_bio, new_inst, new_skills) {
+    console.log("editProfile app.js:" ,username, new_name, new_bio, new_inst, new_skills)
+    const user = await editUser(username, new_name, new_bio, new_inst, new_skills)
+
+    // this.setState({
+    //   currentUser: 
+    // })
+
+  }
 
   render() {
+    const { currentUser } = this.state
     return(
       <div>
         <BrowserRouter>
@@ -148,7 +193,7 @@ class App extends React.Component {
                             (<Profile
                             
                               username={this.state.currentUser.username}
-                              name={this.state.currentUser.name}
+                              name={this.state.currentUser.fullname}
                               bio={this.state.currentUser.about}
                               institution= {this.state.currentUser.institution}
                               skills= {this.state.currentUser.skills}
@@ -187,7 +232,7 @@ class App extends React.Component {
         <Route exact path='/editProfile' render={() =>
                             (<EditProfile
                               currentUser={this.state.currentUser}
-                              updateProfile = {this.updateProfile}
+                              editProfile = {this.editProfile}
                             />)}/>
         </Switch>
 

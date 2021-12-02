@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-import PostEntity from '../../model/Post';
+// import PostEntity from '../../../../model/Post';
 
 class NewPostPage extends React.Component {
     constructor(props) {
@@ -22,15 +22,15 @@ class NewPostPage extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const newPost = new PostEntity(this.props.currentUser.username);
-        newPost.addInformation(
-            this.state.title,
-            this.state.descriptionShort,
-            this.state.descriptionFull,
-            this.props.currentUser.institution,
-            this.state.skillsRequired.split(", ")
-        );
-        this.props.addPost(newPost);
+        // const newPost = new PostEntity(this.props.currentUser.username);
+        // newPost.addInformation(
+        //     this.state.title,
+        //     this.state.descriptionShort,
+        //     this.state.descriptionFull,
+        //     this.props.currentUser.institution,
+        //     this.state.skillsRequired.split(", ")
+        // );
+        // this.props.addPost(newPost);
     }
     
     render() {

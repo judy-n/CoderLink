@@ -6,7 +6,7 @@ import ToolBar from '../ToolBar';
 import PostThumbnail from '../PostThumbnail';
 import coffee from './static/coffee.jpg'
 
-import PostEntity from '../../model/Post';
+// import PostEntity from '../../../model/Post';
 
 class PostList extends React.Component {
     constructor(props) {

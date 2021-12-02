@@ -19,7 +19,9 @@ class Login extends React.Component {
     }
 
     handleLogin() {
-        this.props.handleLogin(this.state.username, this.state.password);
+        this.props.handleLogin(this.state.username, this.state.password).then(res => {
+            console.log("I'm here with res", res, "you should redirect me somewhere")
+        })
     }
 
     render() { 
