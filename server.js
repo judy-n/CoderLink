@@ -247,11 +247,11 @@ app.post('/api/posts', mongoChecker, authenticate, async (req, res) => {
 
 
 // Get all posts
-app.get('/api/posts', mongoChecker, authenticate, async (req, res) => {
+app.get('/api/posts', mongoChecker, async (req, res) => {
 
     try {
         const posts = await Post1.find()
-        res.send(posts)
+        res.send({ posts })
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")

@@ -18,18 +18,17 @@ import PostPage from './views/PostPage';
 // import { addPost, getUserPosts, removePost } from './actions/PostListActions';
 // import { addUser, removeUser, getUser } from './actions/UserListActions';
 
-import { checkSession, login, signup, getUser, editUser} from "./actions/user";
+import { checkSession, login, logout, signup, getUser, editUser} from "./actions/user";
+import { makePost } from "./actions/post"
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.addPost = addPost.bind(this);
+    this.addPost = this.addPost.bind(this);
     // this.getUserPosts = getUserPosts.bind(this);
     // this.removePost = removePost.bind(this);
-    // this.addUser = addUser.bind(this);
-    // this.removeUser = removeUser.bind(this);
-    // this.getUser = getUser.bind(this);
+
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -84,6 +83,7 @@ class App extends React.Component {
     }
   }
 
+
   async componentDidMount() {
     const username = await checkSession(this); // sees if a user is logged in
     console.log("APP.js passing in", username)
@@ -105,33 +105,27 @@ class App extends React.Component {
     console.log("Sending", username, password)
     const user = await login({username, password})
     console.log('response', user)
+    const userObj = await getUser(user)
     if(user) {
       this.setState({
         loggedIn: true,
-        currentUser: user,
+        currentUser: userObj,
       })
       return true
     }
     return false;
   }
 
-  handleLogout() {
-    this.setState({
-      currentUser: {
-        username: null,
-        fullname: null,
-        about: null,
-        skills: null,
-        institution: null,
-        userType: null,
-      },
-      loggedIn: false
-    })
-
+  async handleLogout() {
+    await logout(this)
   }
 
   async handleSignup(username, password, fullname, about, skills, institution) {
     const user = await signup(username, password, fullname, about, skills, institution)
+  }
+
+  async addPost(author, title, description, institution, skillsRequired) {
+    const post = await makePost(author, title, description, institution, skillsRequired)
   }
 
   changeCurrentPost(post) {
@@ -140,30 +134,8 @@ class App extends React.Component {
     });
   }
   
-  // updateProfile(new_user, new_name, new_bio, new_inst, new_skills) 
-  //    {
-  //        const newUser = this.state.currentUser
-  //        newUser.username = new_user
-  //        newUser.name = new_name
-  //        newUser.about = new_bio
-  //        newUser.institution = new_inst
-  //        newUser.skills = new_skills
-         
-  //        this.setState ({
-  //          currentUser: newUser
-  //        })
-
-       
-  //   }
-
   async editProfile(username, new_name, new_bio, new_inst, new_skills) {
-    console.log("editProfile app.js:" ,username, new_name, new_bio, new_inst, new_skills)
     const user = await editUser(username, new_name, new_bio, new_inst, new_skills)
-
-    // this.setState({
-    //   currentUser: 
-    // })
-
   }
 
   render() {
@@ -180,7 +152,6 @@ class App extends React.Component {
         
         <Route exact path='/home' render={() => 
                             (<Home 
-                              postList = {this.state.postList} 
                               addPost = {this.addPost}
                               currentUsername = {this.state.currentUser.username}
                               isAdmin = {this.state.currentUser.userType === 'admin'}
@@ -191,14 +162,7 @@ class App extends React.Component {
                             )}/>
         <Route exact path='/profile' render={() => 
                             (<Profile
-                            
-                              username={this.state.currentUser.username}
-                              name={this.state.currentUser.fullname}
-                              bio={this.state.currentUser.about}
-                              institution= {this.state.currentUser.institution}
-                              skills= {this.state.currentUser.skills}
-                      
-                            
+                              currentUser={this.state.currentUser}
                             />)}/>
         <Route exact path='/login' render={() => 
                             (<Login

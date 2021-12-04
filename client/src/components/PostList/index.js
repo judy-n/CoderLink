@@ -6,12 +6,21 @@ import ToolBar from '../ToolBar';
 import PostThumbnail from '../PostThumbnail';
 import coffee from './static/coffee.jpg'
 
-// import PostEntity from '../../../model/Post';
+import { getAllPosts } from '../../actions/post';
 
 class PostList extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            postList: []
+        }
+        
     }
+
+    async componentDidMount() {
+        await getAllPosts(this)
+    }
+    
 
     render() {
         return (
@@ -20,16 +29,16 @@ class PostList extends React.Component {
                     addPost={this.props.addPost}
                 />
                 <div className='postList'>
-                    {this.props.postList.map((post) => {
+                    {this.state.postList.map((post) => {
                         return (
                             <PostCard
                                 key={uid(post)}
                                 username={post.author}
                                 projectTitle = {post.title}
-                                description={post.descriptionShort}
+                                description={post.description}
                                 skills ={post.skillsRequired}
                                 banner={coffee}
-                                institution = {post.institutions[0]}
+                                institution = {post.institution}
                                 currentUsername = {this.props.currentUsername}
                                 isAdmin = {this.props.isAdmin}
                                 removePost = {this.props.removePost}

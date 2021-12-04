@@ -58,9 +58,16 @@ export const logout = (app) => {
     fetch(url)
         .then(res => {
             app.setState({
-                currentUser: null,
-                message: { type: "", body: "" }
-            });
+                currentUser: {
+                  username: null,
+                  fullname: null,
+                  about: null,
+                  skills: null,
+                  institution: null,
+                  userType: null,
+                },
+                loggedIn: false
+              })
         })
         .catch(error => {
             console.log(error);

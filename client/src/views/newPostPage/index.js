@@ -11,26 +11,25 @@ import Button from "@mui/material/Button";
 class NewPostPage extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            currentUser: this.props.currentUser,
+            title: '',
+            description: '',
+            skillsRequired: '',
+        }
     }
 
-    state = {
-        title: '',
-        descriptionShort: '',
-        descriptionFull: '',
-        skillsRequired: '',
+    componentDidUpdate(prevProps) {
+        // console.log("we updated", this.props, prevProps)
+        if (this.props.currentUser !== prevProps.currentUser) {
+          this.setState({currentUser: this.props.currentUser})
+        }
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        // const newPost = new PostEntity(this.props.currentUser.username);
-        // newPost.addInformation(
-        //     this.state.title,
-        //     this.state.descriptionShort,
-        //     this.state.descriptionFull,
-        //     this.props.currentUser.institution,
-        //     this.state.skillsRequired.split(", ")
-        // );
-        // this.props.addPost(newPost);
+        this.props.addPost(this.state.currentUser.username, this.state.title, this.state.description, 
+            this.state.currentUser.institution, this.state.skillsRequired.split(","))
     }
     
     render() {
@@ -44,17 +43,17 @@ class NewPostPage extends React.Component {
                         label="Project title"
                         onChange={(e) => this.setState({title: e.target.value})}
                     />
-                    <TextField
+                    {/* <TextField
                         variant="outlined"
                         label="Short description"
                         onChange={(e) => this.setState({descriptionShort: e.target.value})}
-                    />
+                    /> */}
                     <TextField
                         variant="outlined"
-                        label="Full description"
+                        label="Description"
                         multiline
                         rows={6}
-                        onChange={(e) => this.setState({descriptionFull: e.target.value})}
+                        onChange={(e) => this.setState({description: e.target.value})}
                     />
                     <TextField
                         variant="outlined"

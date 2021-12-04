@@ -13,7 +13,6 @@ class Home extends React.Component {
             <div className='home'>
                 <Header handleLogout = {this.props.handleLogout}/>
                 <PostList
-                    postList = {this.props.postList}
                     addPost = {this.props.addPost}
                     currentUsername = {this.props.currentUsername}
                     isAdmin = {this.props.isAdmin}

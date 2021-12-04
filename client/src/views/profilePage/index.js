@@ -18,11 +18,13 @@ class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = { 
-        username: this.props.username,
-        name: this.props.fullname,
-        bio: this.props.bio,
-        institution: this.props.institution,
-        skills: this.props.skills || []
+        currentUser: this.props.currentUser
+    }
+}
+
+componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+      this.setState({currentUser: this.props.currentUser})
     }
 }
 
@@ -33,17 +35,17 @@ class Profile extends React.Component {
         <div className="profilePage">
             <Header/>
         
-        <span className="user"><h1>@{this.props.username}</h1></span>
+        <span className="user"><h1>@{this.state.currentUser.username}</h1></span>
         
         
         <div className='ProfileCard'>
             {/* Profile pic */}
             <img src={profilepic} alt=""></img>
             <div className='ProfileAbout'>
-                <h3>Name: <span className="ProfileContent">{this.props.name}</span></h3>
-                <h3>Bio: <span className="ProfileContent">{this.props.bio}</span></h3>
-                <h3>Institution: <span className="ProfileContent">{this.props.institution}</span></h3>
-                <h3>Skills: {(this.props.skills || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
+                <h3>Name: <span className="ProfileContent">{this.state.currentUser.fullname}</span></h3>
+                <h3>Bio: <span className="ProfileContent">{this.state.currentUser.about}</span></h3>
+                <h3>Institution: <span className="ProfileContent">{this.state.currentUser.institution}</span></h3>
+                <h3>Skills: {(this.state.currentUser.skills || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
                 <div className="about-buttons-profile">
                     <div>
                     <Button variant ="contained" className="about-btn blue">Connect</Button>
@@ -69,12 +71,12 @@ class Profile extends React.Component {
         <span className="user"><h1>Posts</h1></span> 
         <div className='userPosts'>
             <PostThumbnail
-            username={this.props.username}
+            username={this.state.currentUser.username}
             projectTitle = 'RPG Game'
             description='Need someone proficient in C++ for my open world rpg game project'
             skills ={["C++", "Unreal Engine"]}
             banner={pixel}
-            institution = {this.props.institution}
+            institution = {this.state.currentUser.institution}
             />
 
             <PostThumbnail
