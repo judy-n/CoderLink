@@ -126,14 +126,13 @@ export const getUser = (username) => {
         });
 }
 
-export const editUser = (username, name, about, skills, institution) => {
+export const editUser = (username, fullname, about, skills, institution) => {
 
-    console.log('edit User json:', username, name, about, skills, institution)
+    console.log('edit User json:', username, fullname, about, skills, institution)
     const url = `/api/users/${username}`
-    console.log('boobs?', JSON.stringify({name, about, skills, institution}))
     const request = new Request(`http://localhost:5001/api/users/${username}`, {
         method: "post",
-        body: JSON.stringify({name, about, skills, institution}),
+        body: JSON.stringify({fullname, about, skills, institution}),
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"

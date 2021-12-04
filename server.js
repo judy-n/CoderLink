@@ -206,7 +206,7 @@ app.post('/api/users/:username', mongoChecker, async (req, res) => {
     console.log("req body in server.js:", req.body)
 
     const user_query = req.params.username
-    const new_name = req.body.name
+    const new_name = req.body.fullname
     const new_about = req.body.about
     const new_inst = req.body.institution
     const new_skills = req.body.skills
@@ -214,7 +214,7 @@ app.post('/api/users/:username', mongoChecker, async (req, res) => {
 
   
     try {
-        const user = await User1.findOneAndUpdate({username: user_query}, {$set: {name: new_name, about: new_about, institution: new_inst, skills: new_skills}}, {new: true, useFindAndModify: false})
+        const user = await User1.findOneAndUpdate({username: user_query}, {$set: {fullname: new_name, about: new_about, institution: new_inst, skills: new_skills}}, {new: true, useFindAndModify: false})
         if (!user) {
             res.status(404).send('User not found') 
         } else {

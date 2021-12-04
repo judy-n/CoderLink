@@ -57,7 +57,7 @@ async componentDidMount() {
 
                 <div className="postpage-tags">
                     <h2>Skills required</h2>
-                {((this.state.currentPost && this.state.currentPost.skills) || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}
+                {((this.state.currentPost && this.state.currentPost.skillsRequired) || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}
                 </div>
 
             </div>

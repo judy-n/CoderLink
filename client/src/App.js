@@ -88,7 +88,6 @@ class App extends React.Component {
     const username = await checkSession(this); // sees if a user is logged in
     console.log("APP.js passing in", username)
     const user = await getUser(username)
-    console.log('makhadde', user)
     this.setState({
       currentUser: {
         username: user.username,
@@ -136,6 +135,7 @@ class App extends React.Component {
   
   async editProfile(username, new_name, new_bio, new_inst, new_skills) {
     const user = await editUser(username, new_name, new_bio, new_inst, new_skills)
+    this.setState({currentUser: user})
   }
 
   render() {
