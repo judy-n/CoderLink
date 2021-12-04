@@ -79,13 +79,13 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 60000,
+            expires: 36000000,
             httpOnly: true
         },
         // store the sessions on the database in production
         store: env === 'production' ? MongoStore.create({
                                                 mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost:27017/TeamFinderAPI'
-                                 }) : null
+                                 }) : MongoStore.create({mongoUrl: 'mongodb://localhost:27017/TeamFinderAPI'})
     })
 );
 
