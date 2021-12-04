@@ -25,7 +25,7 @@ const { mongoose } = require("./db/mongoose");
 const { User1, Post1} = require("./model/Models");
 
 // to validate object IDs
-const { ObjectID } = require("mongodb");
+const { ObjectID, ObjectId } = require("mongodb");
 
 const session = require("express-session");
 const MongoStore = require('connect-mongo') // to store session information on the database in production
@@ -45,6 +45,13 @@ const mongoChecker = (req, res, next) => {
     } else {
         next()  
     }   
+}
+
+const idChecker = (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).send('invalid id')
+    }
+    next()
 }
 
 const authenticate = (req, res, next) => {
@@ -252,6 +259,26 @@ app.get('/api/posts', mongoChecker, async (req, res) => {
     try {
         const posts = await Post1.find()
         res.send({ posts })
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+
+})
+
+// Get a post from its ID
+app.get('/api/posts/:id', mongoChecker, idChecker, async (req, res) => {
+
+    try {
+        console.log("server.js gets id:", req.params.id)
+        const post = await Post1.findById(req.params.id)
+        if (post) {
+            console.log('what is ', post)
+            res.send(post)
+        } else {
+            res.status(404).send("Post not found")
+        }
+        
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")

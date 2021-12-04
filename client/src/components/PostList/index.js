@@ -4,9 +4,9 @@ import PostCard from '../PostCard';
 import { uid } from 'react-uid';
 import ToolBar from '../ToolBar';
 import PostThumbnail from '../PostThumbnail';
-import coffee from './static/coffee.jpg'
+import pixel from './static/pixel.png'
 
-import { getAllPosts } from '../../actions/post';
+import { getAllPosts, getPostById } from '../../actions/post';
 
 class PostList extends React.Component {
     constructor(props) {
@@ -32,18 +32,18 @@ class PostList extends React.Component {
                     {this.state.postList.map((post) => {
                         return (
                             <PostCard
-                                key={uid(post)}
+                                id={post._id}
+                                key={post._id}
                                 username={post.author}
                                 projectTitle = {post.title}
                                 description={post.description}
                                 skills ={post.skillsRequired}
-                                banner={coffee}
+                                banner={pixel}
                                 institution = {post.institution}
                                 currentUsername = {this.props.currentUsername}
                                 isAdmin = {this.props.isAdmin}
                                 removePost = {this.props.removePost}
                                 post = {post}
-                                changeCurrentPost = {this.props.changeCurrentPost}
                             />
                         );
                     })}

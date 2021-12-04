@@ -4,6 +4,7 @@ import './style.css';
 import Header from '../../components/Header';
 import Button from '@mui/material/Button';
 import pixel from './static/pixel.png'
+import { getPostById } from '../../actions/post'
 
 
 
@@ -15,12 +16,20 @@ class PostPage extends React.Component {
     
     
     this.state = {
-        currentPost: this.props.currentPost,
-        author: this.props.currentPost.author,
-        institution: this.props.currentPost.institutions[0],
-        title: this.props.currentPost.title,
-        description: this.props.currentPost.descriptionShort,
-        skills: this.props.currentPost.skillsRequired
+        currentPost: null,
+        // author: this.props.currentPost.author,
+        // institution: this.props.currentPost.institutions[0],
+        // title: this.props.currentPost.title,
+        // description: this.props.currentPost.descriptionShort,
+        // skills: this.props.currentPost.skillsRequired
+    }
+}
+
+async componentDidMount() {
+    const post = await getPostById(this.props.match.params.id)
+    console.log(post)
+    if (post) {
+        this.setState({currentPost: post})
     }
 }
 
@@ -33,11 +42,11 @@ class PostPage extends React.Component {
             <div className="postpage-post">
                 <div className="postpage-postcontent">
 
-                    <div className="postpage-author">@{this.state.author} - {this.state.institution}</div>
-                    <h2>{this.state.title}</h2>
+                    <div className="postpage-author">@{(this.state.currentPost && this.state.currentPost.author) || ''} - {(this.state.currentPost && this.state.currentPost.institution) || ''}</div>
+                    <h2>{(this.state.currentPost && this.state.currentPost.title) || ''}</h2>
                     <img src={pixel}></img>
                     <div className="postpage-desc">
-                        {this.state.description}
+                        {(this.state.currentPost && this.state.currentPost.description) || ''}
                     </div>
                     <Button
                     variant='contained'>
@@ -48,7 +57,7 @@ class PostPage extends React.Component {
 
                 <div className="postpage-tags">
                     <h2>Skills required</h2>
-                {this.state.skills.map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}
+                {((this.state.currentPost && this.state.currentPost.skills) || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}
                 </div>
 
             </div>

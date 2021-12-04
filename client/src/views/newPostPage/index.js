@@ -6,7 +6,6 @@ import Header from "../../components/Header";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-// import PostEntity from '../../../../model/Post';
 
 class NewPostPage extends React.Component {
     constructor(props) {
@@ -20,7 +19,6 @@ class NewPostPage extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // console.log("we updated", this.props, prevProps)
         if (this.props.currentUser !== prevProps.currentUser) {
           this.setState({currentUser: this.props.currentUser})
         }
@@ -43,11 +41,6 @@ class NewPostPage extends React.Component {
                         label="Project title"
                         onChange={(e) => this.setState({title: e.target.value})}
                     />
-                    {/* <TextField
-                        variant="outlined"
-                        label="Short description"
-                        onChange={(e) => this.setState({descriptionShort: e.target.value})}
-                    /> */}
                     <TextField
                         variant="outlined"
                         label="Description"

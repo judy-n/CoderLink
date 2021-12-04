@@ -16,9 +16,6 @@ export const makePost = (author, title, description, institution, skillsRequired
                 return res.json();
             }
         })
-        .then(json => {
-            
-        })
         .catch(error => {
             console.log(error);
         });
@@ -45,6 +42,31 @@ export const getAllPosts = (postList) => {
                 return json;
             } else {
                 postList.setState({ postList: json.posts})
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+export const getPostById = (id) => {
+    const request = new Request(`/api/posts/${id}`, {
+        method: "get",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json !== undefined) {
+                return json;
             }
         })
         .catch(error => {

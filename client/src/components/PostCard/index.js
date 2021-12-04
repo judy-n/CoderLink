@@ -67,8 +67,8 @@ class PostCard extends React.Component {
                     <CardActions className="card-bottom">
                         <h2>{this.state.skills.map((skill, i) => <span className="thumbBadge" key={i}>{skill}</span>)}</h2>
                         <div className='card-bottom-buttons'>
-                            <Button className="view-more-btn" variant ="contained" size="small" onClick={this.handlePostChange}>
-                                <Link to='/post'>View More</Link>
+                            <Button className="view-more-btn" variant ="contained" size="small">
+                                <Link to={`/post/${this.props.id}`}>View More</Link>
                             </Button>
                             {
                                 (this.props.isAdmin || (this.props.currentUsername === this.props.username)) &&

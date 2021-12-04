@@ -1,50 +1,46 @@
 .post-card-container {
-    margin: 2em;
-    width: 35%;
+  margin: 2em;
+  width: 35%;
 }
 
 .MuiCard-root.post-card {
-    display: grid;
-    width: 100%;
-    height: 100%;
+  display: grid;
+  width: 100%;
+  height: 100%;
 }
 
 .MuiCard-root.post-card img {
-    max-height: 140px;
+  max-height: 140px;
 }
 
 .MuiCard-root .MuiCardContent-root.card-content {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 .MuiButton-root.view-more-btn {
-    width: 7rem;
-    margin: 4px;
-    background-color: #34a0a4;
+  width: 7rem;
+  margin: 4px;
+  background-color: #34a0a4;
 }
 
 .MuiButton-root.view-more-btn:hover {
-    margin: 4px;
-    background-color: #7ac3c6;
+  margin: 4px;
+  background-color: #7ac3c6;
 }
 
 .thumbBadge {
-    display: inline-block;
-    font-size: 15px;
-    font-weight: normal;
-    color: #184e77;
-    padding: 5px;
-    border: 2px solid#184e77;
-    border-radius: 15px;
-    margin: 2px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: normal;
+  color: #184e77;
+  padding: 5px;
+  border: 2px solid#184e77;
+  border-radius: 15px;
+  margin: 2px;
 }
 
 .MuiCardActions-root.card-bottom {
-    justify-content: space-between;
-    padding: 0 1rem;
-    height: max-content;
-}
-
-#post-Desc {
-    font-weight: bold;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: max-content;
 }

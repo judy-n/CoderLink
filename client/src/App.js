@@ -19,7 +19,7 @@ import PostPage from './views/PostPage';
 // import { addUser, removeUser, getUser } from './actions/UserListActions';
 
 import { checkSession, login, logout, signup, getUser, editUser} from "./actions/user";
-import { makePost } from "./actions/post"
+import { makePost, getPostById } from "./actions/post"
 
 class App extends React.Component {
 
@@ -173,6 +173,13 @@ class App extends React.Component {
                             (<PostPage
                               currentPost={this.state.currentPost}
                             />)}/>
+
+        <Route exact path='/post/:id' render={ (props) => 
+                            (<PostPage 
+                              {...props}
+                            
+                            />) } /> 
+
         
         <Route exact path='/portfolio' render={() => 
                             (<Portfolio/>)}/>
