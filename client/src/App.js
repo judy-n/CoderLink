@@ -96,7 +96,8 @@ class App extends React.Component {
         skills: user.skills,
         institution: user.institution,
         userType: user.userType,
-      }
+      },
+      loggedIn: user !== undefined
     })
   }
 
@@ -158,11 +159,14 @@ class App extends React.Component {
                               removePost = {this.removePost}
                               handleLogout = {this.handleLogout}
                               changeCurrentPost={this.changeCurrentPost}
+                              loggedIn={this.state.loggedIn}
                               />
                             )}/>
         <Route exact path='/profile' render={() => 
                             (<Profile
                               currentUser={this.state.currentUser}
+                              handleLogout = {this.handleLogout}
+                              loggedIn={this.state.loggedIn}
                             />)}/>
         <Route exact path='/login' render={() => 
                             (<Login
@@ -172,21 +176,28 @@ class App extends React.Component {
         <Route exact path='/post' render={() => 
                             (<PostPage
                               currentPost={this.state.currentPost}
+                              handleLogout = {this.handleLogout}
+                              loggedIn={this.state.loggedIn}
                             />)}/>
 
         <Route exact path='/post/:id' render={ (props) => 
                             (<PostPage 
                               {...props}
-                            
+                              
                             />) } /> 
 
         
         <Route exact path='/portfolio' render={() => 
-                            (<Portfolio/>)}/>
+                            (<Portfolio 
+                              handleLogout = {this.handleLogout}
+                              loggedIn={this.state.loggedIn}
+                              />)}/>
         <Route exact path='/newPostPage' render={() =>
                             (<NewPostPage
                               currentUser={this.state.currentUser}
                               addPost={this.addPost}
+                              handleLogout = {this.handleLogout}
+                              loggedIn={this.state.loggedIn}
                             />)}/>
 
         <Route
@@ -204,6 +215,7 @@ class App extends React.Component {
                             (<EditProfile
                               currentUser={this.state.currentUser}
                               editProfile = {this.editProfile}
+                              loggedIn={this.state.loggedIn}
                             />)}/>
         </Switch>
 

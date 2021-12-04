@@ -1,38 +1,38 @@
 .new-post-form-container {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 }
 
 .new-post-form-container h2 {
-    color: #4b4b4b;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #4b4b4b;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .new-post-form {
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
-    margin: 2em;
-    padding: 2em;
-    background-color: rgb(242, 242, 242);
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    border-radius: 10px;
-    margin-top: 1em;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  margin: 2em;
+  padding: 2em;
+  background-color: rgb(242, 242, 242);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 10px;
+  margin-top: 1em;
 }
 
 .new-post-form .MuiTextField-root {
-    color: black;
-    margin: 10px;
-    border-radius: 7px;
+  color: black;
+  margin: 10px;
+  border-radius: 7px;
 }
 
 .new-post-form .MuiButton-root {
-    width: 50%;
-    place-self: center;
+  width: 50%;
+  place-self: center;
 }
 
 .new-post-form .MuiButton-root a {
-    color: white;
-    text-decoration: none;
-    width: 100%;
+  color: white;
+  text-decoration: none;
+  width: 100%;
 }

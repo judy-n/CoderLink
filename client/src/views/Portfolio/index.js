@@ -28,7 +28,10 @@ class Portfolio extends React.Component {
     render() { 
         return (<div className="portfolioPage">
 
-            <Header/>
+            <Header 
+            handleLogout={this.props.handleLogout}
+            loggedIn={this.props.loggedIn}
+            />
             <div className="port-section">
             <div className="port-sidebar">
             

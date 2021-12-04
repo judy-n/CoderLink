@@ -16,12 +16,7 @@ class PostPage extends React.Component {
     
     
     this.state = {
-        currentPost: null,
-        // author: this.props.currentPost.author,
-        // institution: this.props.currentPost.institutions[0],
-        // title: this.props.currentPost.title,
-        // description: this.props.currentPost.descriptionShort,
-        // skills: this.props.currentPost.skillsRequired
+        currentPost: null
     }
 }
 
@@ -37,7 +32,10 @@ async componentDidMount() {
     render() { 
         return (
         <div className="postpage-container">
-            <Header/>
+           <Header 
+            handleLogout={this.props.handleLogout}
+            loggedIn={this.props.loggedIn}
+            />
 
             <div className="postpage-post">
                 <div className="postpage-postcontent">

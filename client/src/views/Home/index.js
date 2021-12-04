@@ -11,7 +11,11 @@ class Home extends React.Component {
     render() { 
         return (
             <div className='home'>
-                <Header handleLogout = {this.props.handleLogout}/>
+                <Header 
+                handleLogout = {this.props.handleLogout}
+                loggedIn={this.props.loggedIn}
+                
+                />
                 <PostList
                     addPost = {this.props.addPost}
                     currentUsername = {this.props.currentUsername}

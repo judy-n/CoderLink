@@ -33,7 +33,10 @@ componentDidUpdate(prevProps) {
     render() { 
         return (
         <div className="profilePage">
-            <Header/>
+            <Header 
+            handleLogout={this.props.handleLogout}
+            loggedIn={this.props.loggedIn}
+            />
         
         <span className="user"><h1>@{this.state.currentUser.username}</h1></span>
         

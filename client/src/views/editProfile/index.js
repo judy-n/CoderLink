@@ -46,7 +46,10 @@ class EditProfile extends React.Component {
         
         
         <div className="edit-profile-form-container">
-            <Header/>
+            <Header 
+            handleLogout={this.props.handleLogout}
+            loggedIn={this.props.loggedIn}
+            />
 
             <h2>Edit Profile</h2>
 

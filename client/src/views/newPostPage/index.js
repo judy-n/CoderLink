@@ -33,7 +33,10 @@ class NewPostPage extends React.Component {
     render() {
         return(
             <div className='new-post-form-container'>
-                <Header/>
+                <Header 
+            handleLogout={this.props.handleLogout}
+            loggedIn={this.props.loggedIn}
+            />
                 <h2>Create a new post</h2>
                 <form className='new-post-form'>
                     <TextField

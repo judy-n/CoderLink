@@ -28,7 +28,10 @@ class Login extends React.Component {
         return (
         <div className="loginPage">
 
-            <Header/>
+            <Header 
+            handleLogout={this.props.handleLogout}
+            loggedIn={this.props.loggedIn}
+            />
             <h2>Welcome! Please Login</h2>
             <div className="loginForm">
                 <TextField 
