@@ -29,7 +29,7 @@ class PostList extends React.Component {
                     addPost={this.props.addPost}
                 />
                 <div className='postList'>
-                    {this.state.postList.map((post) => {
+                    {this.state.postList.slice(0).reverse().map((post) => {
                         return (
                             <PostCard
                                 id={post._id}

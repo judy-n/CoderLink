@@ -73,3 +73,32 @@ export const getPostById = (id) => {
             console.log(error);
         });
 }
+
+
+
+export const getUserPosts = (username) => {
+    const request = new Request(`/api/posts/user/${username}`, {
+        method: "get",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+
+    return fetch(request)
+        .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json !== undefined) {
+                return json;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+}

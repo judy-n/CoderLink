@@ -287,7 +287,7 @@ app.get('/api/posts/:id', mongoChecker, idChecker, async (req, res) => {
 })
 
 // Get a user's posts (given the username)
-app.get('/api/posts/:username', mongoChecker, authenticate, async (req, res) => { 
+app.get('/api/posts/user/:username', mongoChecker, async (req, res) => { 
     const user = req.params.username
 
     try {

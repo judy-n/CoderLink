@@ -127,9 +127,6 @@ export const getUser = (username) => {
 }
 
 export const editUser = (username, fullname, about, skills, institution) => {
-
-    console.log('edit User json:', username, fullname, about, skills, institution)
-    const url = `/api/users/${username}`
     const request = new Request(`http://localhost:5001/api/users/${username}`, {
         method: "post",
         body: JSON.stringify({fullname, about, skills, institution}),

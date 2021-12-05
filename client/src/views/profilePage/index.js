@@ -13,20 +13,34 @@ import LinkK from '@mui/material/Link'
 import { Link } from 'react-router-dom';
 import EditProfile from '../editProfile';
 
+import { getUserPosts } from '../../actions/post';
+
 class Profile extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = { 
-        currentUser: this.props.currentUser
+        currentUser: this.props.currentUser,
+        userPosts: []
     }
 }
 
-componentDidUpdate(prevProps) {
+async componentDidUpdate(prevProps) {
     if (this.props.currentUser !== prevProps.currentUser) {
       this.setState({currentUser: this.props.currentUser})
+      const posts = await getUserPosts(this.props.currentUser.username)
+      this.setState({userPosts: posts})
+      console.log(this.state.userPosts)
     }
 }
+
+// async componentDidMount() {
+//   console.log("the username we pass in is", this.props.currentUser.username)
+//   const posts = await getUserPosts(this.props.currentUser.username)
+//   console.log("posts are:", posts)
+//   this.setState({userPosts: posts})
+//   console.log(this.state.userPosts)
+// }
 
 
 
@@ -64,7 +78,6 @@ componentDidUpdate(prevProps) {
                 <SettingsIcon/> 
                 </IconButton>
                 </Link>
-                {/* <Link to="/editProfile">meow</Link> */}
                   </div>
                   
                 </div>
