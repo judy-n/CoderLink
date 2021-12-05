@@ -6,15 +6,26 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Link } from "react-router-dom";
 
 class ToolBar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
-        const { addPost } = this.props;
         return (
             <div className='toolBar-container'>
                 <div className='toolBar'>
                     <Button variant='contained' className='about-btn blue'>
-                        <Link to='/newPostPage'>
-                            New Post
-                        </Link>
+                        {
+                            (this.props.loggedIn) &&
+                            <Link to='/newPostPage'>
+                                New Post
+                            </Link>
+                        }
+                        {
+                            (!this.props.loggedIn) &&
+                            <Link to='/login'>
+                                New Post
+                            </Link>
+                        }
                     </Button>
                     <TextField
                         id='outlined-start-adornment'

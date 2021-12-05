@@ -27,6 +27,7 @@ class PostList extends React.Component {
             <div>
                 <ToolBar
                     addPost={this.props.addPost}
+                    loggedIn={this.props.loggedIn}
                 />
                 <div className='postList'>
                     {this.state.postList.slice(0).reverse().map((post) => {

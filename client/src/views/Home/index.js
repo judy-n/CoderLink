@@ -21,6 +21,7 @@ class Home extends React.Component {
                     currentUsername = {this.props.currentUsername}
                     isAdmin = {this.props.isAdmin}
                     removePost = {this.props.removePost}
+                    loggedIn={this.props.loggedIn}
                 />
             </div>
         );

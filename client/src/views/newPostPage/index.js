@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import Header from "../../components/Header";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 class NewPostPage extends React.Component {
@@ -41,6 +43,11 @@ class NewPostPage extends React.Component {
             />
                 <h2>Create a new post</h2>
                 <form className='new-post-form'>
+                    <Link to='/home' id="close-btn">
+                        <IconButton>
+                            <CloseIcon/>
+                        </IconButton>
+                    </Link>
                     <TextField 
                         required
                         variant="outlined"
