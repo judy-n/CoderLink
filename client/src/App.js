@@ -65,7 +65,7 @@ class App extends React.Component {
         institution: user.institution,
         userType: user.userType,
       },
-      loggedIn: !!user
+      loggedIn: user !== undefined
     })
   }
 
@@ -151,7 +151,7 @@ class App extends React.Component {
         <Route exact path='/post/:id' render={ (props) => 
                             (<PostPage 
                               {...props}
-                              
+                              loggedIn={this.state.loggedIn}
                             />) } /> 
 
         

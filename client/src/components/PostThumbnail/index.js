@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import IconButton from "@mui/material/IconButton";
+import { Link } from "react-router-dom";
 import pixel from './static/pixel.png';
 
 import "./style.css";
@@ -54,9 +55,12 @@ class PostThumbnail extends React.Component {
         </CardContent>
         <CardActions className="card-actions">
         <h2>{this.state.skills.map((skill, i) => <span className="thumbBadge" key={i}>{skill}</span>)}</h2>
-        <IconButton>
+
+            <Link to={`/post/${this.props.id}`} target="_blank">
+             <IconButton>
             <OpenInNewIcon/>
-        </IconButton>
+             </IconButton>
+            </Link>
         </CardActions>
 
         </Card>

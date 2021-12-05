@@ -12,7 +12,6 @@ class PostCard extends React.Component {
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
-        this.handlePostChange = this.handlePostChange.bind(this);
         this.state = {
             username: this.props.username,
             projectTitle: this.props.projectTitle,
@@ -27,10 +26,6 @@ class PostCard extends React.Component {
 
     handleDelete() {
         this.props.removePost(this.props.post);
-    }
-
-    handlePostChange() {
-        this.props.changeCurrentPost(this.props.post);
     }
 
     render() {
