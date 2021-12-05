@@ -29,9 +29,7 @@ class NewPostPage extends React.Component {
         if ((this.state.title.length > 0) && (this.state.description.length > 0) && (this.state.skillsRequired.length > 0) ) {
         this.props.addPost(this.state.currentUser.username, this.state.title, this.state.description, 
             this.state.currentUser.institution, this.state.skillsRequired.split(","))
-        } else {
-
-        }
+        } 
     }
     
     render() {

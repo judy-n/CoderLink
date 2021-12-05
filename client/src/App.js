@@ -35,38 +35,6 @@ class App extends React.Component {
     this.changeCurrentPost = this.changeCurrentPost.bind(this);
     this.editProfile = this.editProfile.bind(this);
 
-    // const newUser = new UserEntity('admin', 'admin');
-    // newUser.addInformation('Admin', 21, 'They/Them', '', ['JavaScript', 'React'], 'University of Toronto');
-    // newUser.userType = 'admin';
-    // this.setState({
-    //   userList: [],
-    //   currentUser: null
-    // });
-  //   const newPost1 = new PostEntity('admin');
-  //   newPost1.addInformation(
-  //     'Recommender system for cafes',
-  //     'Using machine mearning to recommend cafes to users based on their previous choices',
-  //     '',
-  //     'University of Toronto',
-  //     ['Python', 'Deep learning']
-  //   );
-  //   const newPost2 = new PostEntity('johnny');
-  //   newPost2.addInformation(
-  //     'A game engine in C',
-  //     'Designing a game engine which would provide anime style physics for a game I am working on',
-  //     '',
-  //     'University of Toronto',
-  //     ['C', 'Linear algebra', 'Vector calculus']
-  //     );
-  //   const newPost3 = new PostEntity('chloe');
-  //   newPost3.addInformation(
-  //     'An application to support the underprivileged',
-  //     'We need a flutter developer for our application which aims to help the homeless and needy',
-  //     '',
-  //     'University of Waterloo',
-  //     ['Flutter', 'Figma']
-  //   );
-    
     this.state = {
       postList: [],
       userList: [],
@@ -97,7 +65,7 @@ class App extends React.Component {
         institution: user.institution,
         userType: user.userType,
       },
-      loggedIn: user !== undefined
+      loggedIn: !!user
     })
   }
 

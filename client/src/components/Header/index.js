@@ -27,7 +27,7 @@ export default function Header(props){
         return (
             <navbar style={{width: "100%"}}>
 
-<Box sx={{ flexGrow: 1 }}>
+<Box sx={{ flexGrow: 1 }} style={{marginBottom: "3rem"}}>
       <AppBar position="static" id="appbar">
         <Toolbar>
           <Typography variant="h5" id="sitetitle" component="div" sx={{ flexGrow: 1 }}>

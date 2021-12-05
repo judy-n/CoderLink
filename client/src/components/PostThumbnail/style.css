@@ -1,14 +1,14 @@
 .PostThumbnail {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
 }
 
 .MuiCard-root.post-thumb-card {
   display: grid;
-  max-width: 500px;
-  margin: 10px;
-  height: 320px;
+  height: 20rem;
+  width: 18rem;
+  margin: 1rem;
 }
 
 .MuiCard-root.post-thumb-card img {
@@ -38,8 +38,7 @@
 .MuiCardActions-root.card-actions {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  column-gap: 160px;
+  justify-content: space-between;
 }
 
 #post-Desc {

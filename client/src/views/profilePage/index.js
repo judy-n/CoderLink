@@ -12,6 +12,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LinkK from '@mui/material/Link'
 import { Link } from 'react-router-dom';
 import EditProfile from '../editProfile';
+import PostCard from '../../components/PostCard'
 
 import { getUserPosts } from '../../actions/post';
 
@@ -33,16 +34,6 @@ async componentDidUpdate(prevProps) {
       console.log(this.state.userPosts)
     }
 }
-
-// async componentDidMount() {
-//   console.log("the username we pass in is", this.props.currentUser.username)
-//   const posts = await getUserPosts(this.props.currentUser.username)
-//   console.log("posts are:", posts)
-//   this.setState({userPosts: posts})
-//   console.log(this.state.userPosts)
-// }
-
-
 
     render() { 
         return (
@@ -86,32 +77,18 @@ async componentDidUpdate(prevProps) {
 
         <span className="user"><h1>Posts</h1></span> 
         <div className='userPosts'>
-            <PostThumbnail
-            username={this.state.currentUser.username}
-            projectTitle = 'RPG Game'
-            description='Need someone proficient in C++ for my open world rpg game project'
-            skills ={["C++", "Unreal Engine"]}
-            banner={pixel}
-            institution = {this.state.currentUser.institution}
-            />
-
-            <PostThumbnail
-            username={this.props.username}
-            projectTitle = 'Recommender system for cafes'
-            description = "Building a recommender system to recommend cafes based on the users' favorite restaurants. Looking for someone with experience working with blah blah"
-            skills = {["Python", "Neural networks"]}
-            institution = {this.props.institution}
-            banner={coffee}
-            />
-
-            <PostThumbnail
-            username={this.props.username}
-            projectTitle = 'RPG Game'
-            description='Need someone proficient in C++ for my open world rpg game project'
-            skills ={["C++", "Unreal Engine"]}
-            banner={pixel}
-            institution = {this.props.institution}
-            />  
+            {this.state.userPosts.slice(0).reverse().map((post) => {
+              return (
+              <PostThumbnail
+              username={post.author}
+              projectTitle={post.title}
+              description={post.description}
+              skills={post.skillsRequired}
+              banner={pixel}
+              institution={post.institution}
+              />
+              );
+            })}            
             </div>    
 
                 
