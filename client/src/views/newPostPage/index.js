@@ -26,8 +26,12 @@ class NewPostPage extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        if ((this.state.title.length > 0) && (this.state.description.length > 0) && (this.state.skillsRequired.length > 0) ) {
         this.props.addPost(this.state.currentUser.username, this.state.title, this.state.description, 
             this.state.currentUser.institution, this.state.skillsRequired.split(","))
+        } else {
+
+        }
     }
     
     render() {
@@ -39,12 +43,14 @@ class NewPostPage extends React.Component {
             />
                 <h2>Create a new post</h2>
                 <form className='new-post-form'>
-                    <TextField
+                    <TextField 
+                        required
                         variant="outlined"
                         label="Project title"
                         onChange={(e) => this.setState({title: e.target.value})}
                     />
                     <TextField
+                        required
                         variant="outlined"
                         label="Description"
                         multiline
@@ -52,6 +58,7 @@ class NewPostPage extends React.Component {
                         onChange={(e) => this.setState({description: e.target.value})}
                     />
                     <TextField
+                        required
                         variant="outlined"
                         label="Skills required"
                         onChange={(e) => this.setState({skillsRequired: e.target.value})}
