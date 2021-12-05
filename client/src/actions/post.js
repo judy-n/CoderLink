@@ -21,6 +21,28 @@ export const makePost = (author, title, description, institution, skillsRequired
         });
 }
 
+export const deletePost = (id) => {
+
+    const request = new Request(`/api/posts/${id}`, {
+        method: "delete",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+
+}
+
 export const getAllPosts = (postList) => {
     const request = new Request(`/api/posts`, {
         method: "get",
@@ -31,7 +53,6 @@ export const getAllPosts = (postList) => {
     })
     return fetch(request)
         .then(res => {
-            console.log(res)
             if (res.status === 200) {
                 return res.json();
             }

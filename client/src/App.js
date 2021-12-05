@@ -6,20 +6,15 @@ import { Redirect } from 'react-router';
 import Profile from './views/profilePage/index';
 import Home from './views/Home';
 import Login from './views/Login'
-import Post from './views/posts/index';
 import Portfolio from './views/Portfolio';
 import NewPostPage from './views/newPostPage';
-// import UserEntity from '../../model/User';
 import EditProfile from './views/editProfile';
-// import PostEntity from '../../model/Post';
 import SignupPage from './views/SignupPage';
 import PostPage from './views/PostPage';
 
-// import { addPost, getUserPosts, removePost } from './actions/PostListActions';
-// import { addUser, removeUser, getUser } from './actions/UserListActions';
 
-import { checkSession, login, logout, signup, getUser, editUser} from "./actions/user";
-import { makePost, getPostById } from "./actions/post"
+import { checkSession, login, logout, signup, getUser, editUser } from "./actions/user";
+import { makePost, getPostById, deletePost } from "./actions/post"
 
 class App extends React.Component {
 
@@ -32,7 +27,6 @@ class App extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
-    this.changeCurrentPost = this.changeCurrentPost.bind(this);
     this.editProfile = this.editProfile.bind(this);
 
     this.state = {
@@ -96,11 +90,10 @@ class App extends React.Component {
     const post = await makePost(author, title, description, institution, skillsRequired)
   }
 
-  changeCurrentPost(post) {
-    this.setState({
-      currentPost: post
-    });
+  async deletePost(id) {
+      const post = await deletePost(id)
   }
+
   
   async editProfile(username, new_name, new_bio, new_inst, new_skills) {
     const user = await editUser(username, new_name, new_bio, new_inst, new_skills)
@@ -126,7 +119,6 @@ class App extends React.Component {
                               isAdmin = {this.state.currentUser.userType === 'admin'}
                               removePost = {this.removePost}
                               handleLogout = {this.handleLogout}
-                              changeCurrentPost={this.changeCurrentPost}
                               loggedIn={this.state.loggedIn}
                               />
                             )}/>

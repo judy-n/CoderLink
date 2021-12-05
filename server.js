@@ -270,10 +270,8 @@ app.get('/api/posts', mongoChecker, async (req, res) => {
 app.get('/api/posts/:id', mongoChecker, idChecker, async (req, res) => {
 
     try {
-        console.log("server.js gets id:", req.params.id)
         const post = await Post1.findById(req.params.id)
         if (post) {
-            console.log('what is ', post)
             res.send(post)
         } else {
             res.status(404).send("Post not found")
@@ -285,6 +283,27 @@ app.get('/api/posts/:id', mongoChecker, idChecker, async (req, res) => {
     }
 
 })
+
+// Delete a post from its ID
+app.delete('/api/posts/:id', mongoChecker, idChecker, async (req, res) => {
+
+    try {
+        const post = await Post1.findByIdAndRemove(req.params.id)
+        if (!post) {
+            res.status(404).send("Post not found")
+        } else {
+            res.send(post)
+        }
+
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+})
+
+
+
+
 
 // Get a user's posts (given the username)
 app.get('/api/posts/user/:username', mongoChecker, async (req, res) => { 
