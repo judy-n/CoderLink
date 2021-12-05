@@ -6,6 +6,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import IconButton from "@mui/material/IconButton";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { Link } from "react-router-dom";
 
 class PostCard extends React.Component {
@@ -25,7 +27,8 @@ class PostCard extends React.Component {
     }
 
     handleDelete() {
-        this.props.removePost(this.props.post);
+        this.props.removePost(this.props.id);
+        window.location.reload();
     }
 
     render() {
@@ -67,7 +70,11 @@ class PostCard extends React.Component {
                             </Button>
                             {
                                 (this.props.isAdmin || (this.props.currentUsername === this.props.username)) &&
-                                <Button className="view-more-btn" variant ="contained" size="small" onClick={this.handleDelete}>Delete</Button>
+                                <IconButton
+                                    onClick={this.handleDelete}
+                                >
+                                    <DeleteOutlineIcon/>
+                                </IconButton>
                             }
                         </div>
                     </CardActions>

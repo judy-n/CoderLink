@@ -21,9 +21,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.addPost = this.addPost.bind(this);
-    // this.getUserPosts = getUserPosts.bind(this);
-    // this.removePost = removePost.bind(this);
-
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -117,7 +114,7 @@ class App extends React.Component {
                               addPost = {this.addPost}
                               currentUsername = {this.state.currentUser.username}
                               isAdmin = {this.state.currentUser.userType === 'admin'}
-                              removePost = {this.removePost}
+                              removePost = {this.deletePost}
                               handleLogout = {this.handleLogout}
                               loggedIn={this.state.loggedIn}
                               />
