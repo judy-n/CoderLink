@@ -1,10 +1,11 @@
+
 .edit-profile-form-container {
   display: grid;
   place-items: center;
 }
 
 .edit-profile-form {
-  background-color: rgb(242, 242, 242);
+  background-color: white;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 10px;
   width: 500px;
@@ -14,4 +15,18 @@
   flex-direction: column;
   align-items: center;
   row-gap: 1rem;
+}
+
+.edit-profile-form-container h2 {
+  color: #194e77;
+  font-family: "DM Sans", sans-serif;
+  padding-bottom: 1rem;
+}
+
+.edit-profile-form-container hr {
+  width: 8rem;
+  border: 0;
+  height: 3px;
+  background: #34a0a4;
+  margin-bottom: 2rem;
 }

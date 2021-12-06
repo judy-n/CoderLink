@@ -33,6 +33,7 @@ class Login extends React.Component {
             loggedIn={this.props.loggedIn}
             />
             <h2>Welcome! Please Login</h2>
+            <hr/>
             <div className="loginForm">
                 <TextField 
                 label="Username" id="filled-basic"

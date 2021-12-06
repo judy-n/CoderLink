@@ -4,8 +4,17 @@
 }
 
 .new-post-form-container h2 {
-  color: #4b4b4b;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #194e77;
+  font-family: "DM Sans", sans-serif;
+  padding-bottom: 1rem;
+}
+
+.new-post-form-container hr {
+  width: 8rem;
+  border: 0;
+  height: 3px;
+  background: #34a0a4;
+  margin-bottom: 1rem;
 }
 
 .new-post-form {
@@ -14,7 +23,7 @@
   flex-direction: column;
   margin: 2em;
   padding: 2em;
-  background-color: rgb(242, 242, 242);
+  background-color: white;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   border-radius: 10px;
   margin-top: 1em;
@@ -39,4 +48,12 @@
 
 #close-btn {
   align-self: flex-end;
+}
+
+#post-btn{
+  box-shadow: none;
+}
+
+#post-btn:hover{
+  box-shadow: none;
 }

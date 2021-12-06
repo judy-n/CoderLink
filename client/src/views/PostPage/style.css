@@ -1,6 +1,7 @@
 .postpage-container {
   display: grid;
   place-items: center;
+  font-family: "DM Sans", sans-serif;
 }
 
 .postpage-post {

@@ -3,8 +3,9 @@ import Header from "../../components/Header";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import './style.css'
-// import UserEntity from '../../../model/User';
 import { Link } from 'react-router-dom';
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 class EditProfile extends React.Component {
 
@@ -22,7 +23,7 @@ class EditProfile extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.currentUser != this.props.currentUser) {
+        if (prevProps.currentUser !== this.props.currentUser) {
             this.setState({
                 currentUser: this.props.currentUser,
                 username: this.props.currentUser.username,
@@ -52,9 +53,14 @@ class EditProfile extends React.Component {
             />
 
             <h2>Edit Profile</h2>
+            <hr/>
 
             <div className="edit-profile-form">
-            
+                <Link to='/profile' id="close-btn">
+                    <IconButton>
+                        <CloseIcon/>
+                    </IconButton>
+                </Link>
 
             <TextField
             id="outlined-helperText"
@@ -63,8 +69,8 @@ class EditProfile extends React.Component {
             onChange={(e) => this.setState({name: e.target.value})}
             />
 
-            <TextField
-            id="outlined-helperText"
+            <TextField disabled
+            id="outlined-disabled"
             label="Username"
             defaultValue={this.state.username}
             onChange={(e) => this.setState({username: e.target.value})}
@@ -96,31 +102,11 @@ class EditProfile extends React.Component {
             variant='contained'
             type='submit'
             onClick={this.handleSubmit.bind(this)}
+            className="about-btn green"
             > Save
             </Button>
-            
-            <Button 
-            variant='contained'>
-            <Link to='/profile'>Go back
-                 </Link>
-            </Button>
-            
-           
-            
-           
-
-
-
-
 
             </div>
-
-
-
-
-
-
-
 
         </div>
         );

@@ -1,6 +1,15 @@
 .loginPage {
   display: grid;
   place-items: center;
+  font-family: "DM Sans", sans-serif;
+}
+
+.loginPage hr {
+  width: 8rem;
+  border: 0;
+  height: 3px;
+  background: #34a0a4;
+  margin-bottom: 2rem;
 }
 
 .loginForm {
@@ -17,9 +26,11 @@
 }
 
 .loginPage h2 {
-  color: #4b4b4b;
   margin-top: 100px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #194e77;
+  font-family: "DM Sans", sans-serif;
+  padding-bottom: 1rem;
+
 }
 
 .loginForm .MuiTextField-root {

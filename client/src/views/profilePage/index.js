@@ -9,10 +9,7 @@ import pixel from './static/pixel.png'
 import coffee from './static/coffee.jpg'
 import IconButton from '@mui/material/IconButton'
 import SettingsIcon from '@mui/icons-material/Settings';
-import LinkK from '@mui/material/Link'
 import { Link } from 'react-router-dom';
-import EditProfile from '../editProfile';
-import PostCard from '../../components/PostCard'
 
 import { getUserPosts } from '../../actions/post';
 
@@ -61,7 +58,6 @@ async componentDidMount() {
                 <h3>Skills: {(this.state.currentUser.skills || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
                 <div className="about-buttons-profile">
                     <div>
-                    <Button variant ="contained" className="about-btn blue">Connect</Button>
                   <Button href="portfolio" variant="contained" className="about-btn green">Portfolio</Button>
                     </div>
 

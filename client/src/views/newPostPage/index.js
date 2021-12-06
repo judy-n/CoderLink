@@ -42,6 +42,7 @@ class NewPostPage extends React.Component {
             loggedIn={this.props.loggedIn}
             />
                 <h2>Create a new post</h2>
+                <hr/>
                 <form className='new-post-form'>
                     <Link to='/home' id="close-btn">
                         <IconButton>
@@ -72,11 +73,12 @@ class NewPostPage extends React.Component {
                     <Button
                         variant="contained"
                         className="about-btn green"
+                        id="post-btn"
                         type="submit"
                         onClick={this.handleSubmit.bind(this)}
                     >
                         <Link to='/home'>
-                            Create Post
+                            Post
                         </Link>
                     </Button>
                 </form>

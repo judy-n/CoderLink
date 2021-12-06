@@ -173,6 +173,7 @@ class App extends React.Component {
                               currentUser={this.state.currentUser}
                               editProfile = {this.editProfile}
                               loggedIn={this.state.loggedIn}
+                              handleLogout = {this.handleLogout}
                             />)}/>
         </Switch>
 

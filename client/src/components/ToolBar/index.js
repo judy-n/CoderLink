@@ -2,6 +2,8 @@ import React from "react";
 import './style.css';
 import { Button, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import IconButton from "@mui/material/IconButton";
 // import PostEntity from "../../../model/Post";
 import { Link } from "react-router-dom";
 
