@@ -106,7 +106,7 @@ class App extends React.Component {
         
         <Route
           exact path='/'
-          render={() => (<Redirect to='/login'/>)}
+          render={() => (<Redirect to='/home'/>)}
         />
         
         <Route exact path='/home' render={() => 
