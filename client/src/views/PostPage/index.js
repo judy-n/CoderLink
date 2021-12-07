@@ -90,6 +90,7 @@ async applyToPost () {
            <Header 
             handleLogout={this.props.handleLogout}
             loggedIn={this.props.loggedIn}
+            currentUsername={this.props.currentUsername}
             />
 
             <div className="postpage-post">

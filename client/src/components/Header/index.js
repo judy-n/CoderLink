@@ -66,7 +66,7 @@ export default function Header(props){
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               > 
-              <Link to='/profile' style={{ textDecoration: 'none' , color:"black"}}>
+              <Link to={`/profile/${props.currentUsername}`} style={{ textDecoration: 'none' , color:"black"}}>
                 <MenuItem>Profile</MenuItem> </Link>
                 <Link to='/login' onClick={props.handleLogout} style={{ textDecoration: 'none' , color:"black"}}>
                 <MenuItem onClick={handleClose}>Log out</MenuItem> </Link>

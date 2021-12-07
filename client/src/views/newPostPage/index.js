@@ -40,6 +40,7 @@ class NewPostPage extends React.Component {
                 <Header 
             handleLogout={this.props.handleLogout}
             loggedIn={this.props.loggedIn}
+            currentUsername={this.props.currentUsername}
             />
                 <h2>Create a new post</h2>
                 <hr/>

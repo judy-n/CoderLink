@@ -58,13 +58,14 @@ class EditProfile extends React.Component {
             <Header 
             handleLogout={this.props.handleLogout}
             loggedIn={this.props.loggedIn}
+            currentUsername={this.props.currentUsername}
             />
 
             <h2>Edit Profile</h2>
             <hr/>
 
             <div className="edit-profile-form">
-                <Link to='/profile' id="close-btn">
+                <Link to={`/profile/${this.state.username}`} id="close-btn">
                     <IconButton>
                         <CloseIcon/>
                     </IconButton>

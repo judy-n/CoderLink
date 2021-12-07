@@ -12,29 +12,41 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { Link } from 'react-router-dom';
 
 import { getUserPosts } from '../../actions/post';
+import { getUser} from "../../actions/user";
 
 class Profile extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = { 
-        currentUser: this.props.currentUser,
-        userPosts: []
+        currentUser: null,
+        userPosts: [],
+        isMyProfile: false,
     }
 }
 
 async componentDidUpdate(prevProps) {
-    if (this.props.currentUser !== prevProps.currentUser) {
-      this.setState({currentUser: this.props.currentUser})
-      const posts = await getUserPosts(this.props.currentUser.username)
-      this.setState({userPosts: posts})
-      console.log(this.state.userPosts)
-    }
+        if (this.props.match.params.username !== prevProps.match.params.username) {
+            const user = await getUser(this.props.match.params.username)
+            this.setState({currentUser: user})
+            const posts = await getUserPosts(this.state.currentUser.username)
+            this.setState({userPosts: posts})
+            if (this.props.loggedInUser.username === this.state.currentUser.username) {
+                console.log("Does this happen?")
+                this.setState({isMyProfile: true})
+            }
+        }
 }
 
 async componentDidMount() {
-    const posts = await getUserPosts(this.props.currentUser.username)
+    const user = await getUser(this.props.match.params.username)
+    this.setState({currentUser: user})
+    const posts = await getUserPosts(this.state.currentUser.username)
     this.setState({userPosts: posts})
+    if (this.props.loggedInUser.username === this.state.currentUser.username) {
+        console.log("Does this happen?")
+        this.setState({isMyProfile: true})
+    }
 }
 
     render() { 
@@ -43,34 +55,35 @@ async componentDidMount() {
             <Header 
             handleLogout={this.props.handleLogout}
             loggedIn={this.props.loggedIn}
+            currentUsername={this.props.currentUsername}
             />
         
-        <span className="user"><h1>@{this.state.currentUser.username}</h1></span>
+        <span className="user"><h1>@{this.state.currentUser && this.state.currentUser.username || ''}</h1></span>
         
         
         <div className='ProfileCard'>
             {/* Profile pic */}
             <img src={profilepic} alt=""></img>
             <div className='ProfileAbout'>
-                <h3>Name: <span className="ProfileContent">{this.state.currentUser.fullname}</span></h3>
-                <h3>Bio: <span className="ProfileContent">{this.state.currentUser.about}</span></h3>
-                <h3>Institution: <span className="ProfileContent">{this.state.currentUser.institution}</span></h3>
-                <h3>Skills: {(this.state.currentUser.skills || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
+                <h3>Name: <span className="ProfileContent">{this.state.currentUser && this.state.currentUser.fullname}</span></h3>
+                <h3>Bio: <span className="ProfileContent">{this.state.currentUser && this.state.currentUser.about}</span></h3>
+                <h3>Institution: <span className="ProfileContent">{this.state.currentUser && this.state.currentUser.institution}</span></h3>
+                <h3>Skills: {(this.state.currentUser && this.state.currentUser.skills || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
                 <div className="about-buttons-profile">
                     <div>
                   <Button href="portfolio" variant="contained" className="about-btn green">Portfolio</Button>
                     </div>
+                    {this.state.isMyProfile && (
+                        <div>
+                            <Link to="/editProfile">
+                                <IconButton>
 
-                  <div>
-                    <Link to="/editProfile">
-                  <IconButton
-                  >
 
-                  
-                <SettingsIcon/> 
-                </IconButton>
-                </Link>
-                  </div>
+                                    <SettingsIcon/>
+                                </IconButton>
+                            </Link>
+                        </div>
+                    )}
                   
                 </div>
             </div>
@@ -78,7 +91,7 @@ async componentDidMount() {
 
         <span className="user"><h1>Posts</h1></span> 
         <div className='userPosts'>
-            {this.state.userPosts.slice(0).reverse().map((post) => {
+            {(this.state.userPosts.slice(0).reverse() || []).map((post) => {
               return (
               <PostThumbnail
                   id={post._id}

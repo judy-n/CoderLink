@@ -25,6 +25,7 @@ class App extends React.Component {
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.editProfile = this.editProfile.bind(this);
+    this.getUser = this.getUser.bind(this)
 
     this.state = {
       postList: [],
@@ -79,6 +80,10 @@ class App extends React.Component {
     await logout(this)
   }
 
+  async getUser(username) {
+      await getUser(username)
+  }
+
   async handleSignup(username, password, fullname, about, skills, institution) {
     const user = await signup(username, password, fullname, about, skills, institution)
   }
@@ -119,16 +124,20 @@ class App extends React.Component {
                               loggedIn={this.state.loggedIn}
                               />
                             )}/>
-        <Route exact path='/profile' render={() => 
+            <Route exact path='/profile/:username' render={(props) =>
                             (<Profile
-                              currentUser={this.state.currentUser}
-                              handleLogout = {this.handleLogout}
-                              loggedIn={this.state.loggedIn}
+                                {...props}
+                                currentUsername={this.state.currentUser.username}
+                                loggedInUser={this.state.currentUser}
+                                handleLogout={this.handleLogout}
+                                loggedIn={this.state.loggedIn}
                             />)}/>
         <Route exact path='/login' render={() => 
                             (<Login
+                                currentUsername = {this.state.currentUser.username}
                               handleLogin={this.handleLogin}
                               loggedIn={this.state.loggedIn}
+                                handleLogout = {this.handleLogout}
                             />)}/>
         <Route exact path='/post' render={() => 
                             (<PostPage
@@ -159,6 +168,7 @@ class App extends React.Component {
                               />)}/>
         <Route exact path='/newPostPage' render={() =>
                             (<NewPostPage
+                                currentUsername = {this.state.currentUser.username}
                               currentUser={this.state.currentUser}
                               addPost={this.addPost}
                               handleLogout = {this.handleLogout}
@@ -169,7 +179,8 @@ class App extends React.Component {
           exact path='/signup'
           render={
             () => (
-              <SignupPage 
+              <SignupPage
+                  currentUsername = {this.state.currentUser.username}
                 handleSignup={this.handleSignup}
                 handleLogout={this.handleLogout}
                 loggedIn={this.state.loggedIn}
@@ -180,6 +191,7 @@ class App extends React.Component {
         
         <Route exact path='/editProfile' render={() =>
                             (<EditProfile
+                                currentUsername = {this.state.currentUser.username}
                               currentUser={this.state.currentUser}
                               editProfile = {this.editProfile}
                               loggedIn={this.state.loggedIn}

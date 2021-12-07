@@ -42,6 +42,7 @@ class SignupPage extends React.Component {
                 <Header
                     handleLogout={this.props.handleLogout}
                     loggedIn={this.props.loggedIn}
+                    currentUsername={this.props.currentUsername}
                 />
                 <h2>Welcome! Sign up as a new user</h2>
                 <hr/>

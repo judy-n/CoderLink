@@ -93,15 +93,13 @@ export const signup = (username, password, fullname, about, skills, institution)
         })
         .then(json => {
             console.log('what is', json)
-            // if (json.currentUser !== undefined) {
-            //     return json.currentUser;
-            // }
         })
         .catch(error => {
             console.log(error);
         });
 }
 
+// Return the User object from a username
 export const getUser = (username) => {
     const request = new Request(`/api/users/${username}`, {
         method: "get",

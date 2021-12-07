@@ -14,6 +14,7 @@ class Home extends React.Component {
                 <Header 
                 handleLogout = {this.props.handleLogout}
                 loggedIn={this.props.loggedIn}
+                currentUsername={this.props.currentUsername}
                 
                 />
                 <PostList

@@ -31,6 +31,7 @@ class Login extends React.Component {
             <Header 
             handleLogout={this.props.handleLogout}
             loggedIn={this.props.loggedIn}
+            currentUsername={this.props.currentUsername}
             />
             <h2>Welcome! Please Login</h2>
             <hr/>
