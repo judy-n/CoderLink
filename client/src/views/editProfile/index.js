@@ -6,6 +6,8 @@ import './style.css'
 import { Link } from 'react-router-dom';
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import Alert from '@mui/material/Alert'
+import AlertTitle from '@mui/material/AlertTitle'
 
 class EditProfile extends React.Component {
 
@@ -18,6 +20,7 @@ class EditProfile extends React.Component {
             about: this.props.currentUser.about,
             institution: this.props.currentUser.institution,
             skills: this.props.currentUser.skills,
+            saved: false
         }
 
     }
@@ -35,17 +38,22 @@ class EditProfile extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.setState({saved: false})
+    }
+
     async handleSubmit(event) {
         console.log("editprofile passes in:", this.state.username, this.state.name, this.state.about, 
         this.state.skills, this.state.institution)
         await this.props.editProfile(this.state.username, this.state.name, this.state.about, 
             this.state.skills, this.state.institution)
+        // Success -> Show the alert
+        this.setState({saved: true})
     }
 
     render() { 
         return (
-        
-        
+
         <div className="edit-profile-form-container">
             <Header 
             handleLogout={this.props.handleLogout}
@@ -61,7 +69,12 @@ class EditProfile extends React.Component {
                         <CloseIcon/>
                     </IconButton>
                 </Link>
-
+                {this.state.saved && (
+                    <Alert severity="success" className={"success-alert"}>
+                        <AlertTitle>Success</AlertTitle>
+                        Profile saved!
+                    </Alert>
+                )}
             <TextField
             id="outlined-helperText"
             label="Full name"
@@ -105,6 +118,8 @@ class EditProfile extends React.Component {
             className="about-btn green"
             > Save
             </Button>
+
+
 
             </div>
 
