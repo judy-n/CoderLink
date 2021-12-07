@@ -57,7 +57,7 @@
   place-items: center;
   background-color: white;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  margin: 5rem;
+  margin: 12rem 5rem 5rem;
   padding: 1rem;
   border-radius: 1rem;
 }
@@ -96,4 +96,28 @@
 .apply-alert {
   margin-top: 2rem;
   width: 50%;
+}
+
+.appList {
+  background-color: #efefef;
+  max-height: 20rem;
+  max-width: 20rem;
+  overflow: scroll;
+}
+
+.appListItem {
+  border-bottom: solid 1px darkgrey;
+  padding: 0 !important;
+}
+
+.appListItem:last-child {
+  border: none;
+}
+
+.listEl {
+  padding: 0 !important;
+}
+
+.close-modal {
+  justify-self: flex-end;
 }

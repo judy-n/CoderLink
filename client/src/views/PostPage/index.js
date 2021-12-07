@@ -6,11 +6,18 @@ import Button from '@mui/material/Button';
 import pixel from './static/pixel.png'
 import Modal from '@mui/material/Modal';
 import TextField from "@mui/material/TextField";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
 
 import { getPostById, applyToPost } from '../../actions/post'
 import AlertTitle from "@mui/material/AlertTitle";
 import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -119,7 +126,11 @@ async applyToPost () {
                         aria-describedby="modal-modal-description"
                     >
                         <div className="applyModal">
-
+                            <IconButton
+                                className="close-modal"
+                            onClick={this.handleClose}>
+                                <CloseIcon/>
+                            </IconButton>
                             <h2>Apply to <span>{`${(this.state.currentPost && this.state.currentPost.title) || ''}`}</span></h2>
                             <hr/>
                             <p>Make sure to include some contact info so the creator can reach out to you. </p>
@@ -154,6 +165,21 @@ async applyToPost () {
                 <div className="postpage-tags">
                     <h2>Skills required</h2>
                 {((this.state.currentPost && this.state.currentPost.skillsRequired) || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}
+                    {(this.props.isAdmin || this.state.isMyPost) && <h2>Applications</h2>}
+
+                    <div className="appList">
+                        <List className="listEl">
+                            {(this.props.isAdmin || this.state.isMyPost) && (this.state.currentPost.applications || []).map((a) =>
+                                <ListItem className="appListItem">
+                                    <ListItemButton>
+                                        <ListItemText primary={a.username}
+                                                      secondary={a.message}/>
+                                    </ListItemButton>
+                                </ListItem>
+                            )
+                            }
+                        </List>
+                    </div>
                 </div>
 
             </div>
