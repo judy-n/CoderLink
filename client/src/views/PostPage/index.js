@@ -27,7 +27,7 @@ async componentDidMount() {
     console.log(post)
     if (post) {
         this.setState({currentPost: post})
-        if (post.author === this.props.currentUser.username) {
+        if (post.author === this.props.currentUser.username || this.props.isAdmin) {
             this.setState({isMyPost: true})
         }
     }
@@ -35,7 +35,7 @@ async componentDidMount() {
 
 componentDidUpdate(prevProps) {
         if (prevProps.currentUser !== this.props.currentUser) {
-            if (this.state.currentPost.author === this.props.currentUser.username) {
+            if (this.state.currentPost.author === this.props.currentUser.username || this.props.isAdmin) {
                 this.setState({isMyPost: true})
             }
         }

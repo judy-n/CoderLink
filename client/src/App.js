@@ -147,7 +147,7 @@ class App extends React.Component {
                               currentUser={this.state.currentUser}
                               currentUsername={this.state.currentUser.username}
                               handleLogout = {this.handleLogout}
-                              isAdmin={this.state.isAdmin}
+                              isAdmin={this.state.currentUser.userType === 'admin'}
                               removePost={this.deletePost}
                             />) } /> 
 
