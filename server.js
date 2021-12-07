@@ -22,7 +22,7 @@ const { mongoose } = require("./db/mongoose");
 // mongoose.set('useFindAndModify', false); // for some deprecation issues
 
 // import the mongoose models
-const { User1, Post1} = require("./model/Models");
+const { User, Post} = require("./model/Models");
 
 // to validate object IDs
 const { ObjectID, ObjectId } = require("mongodb");
@@ -56,7 +56,7 @@ const idChecker = (req, res, next) => {
 
 const authenticate = (req, res, next) => {
     if (req.session.user) {
-        User1.findById(req.session.user).then((user) => {
+        User.findById(req.session.user).then((user) => {
             if (!user) {
                 return Promise.reject()
             } else {
@@ -96,7 +96,7 @@ app.post("/users/login", (req, res) => {
 
     // Use the static method on the User model to find a user
     // by their email and password
-    User1.findByUsernamePassword(username, password)
+    User.findByUsernamePassword(username, password)
         .then(user => {
             // Add the user's id to the session.
             // We can check later if this exists to ensure we are logged in.
@@ -136,7 +136,7 @@ app.get("/users/check-session", (req, res) => {
 // Create a new User
 app.post('/api/users', mongoChecker, async (req, res) => {
 
-    const user = new User1({
+    const user = new User({
         username: req.body.username,
         password: req.body.password,
         fullname: req.body.fullname,
@@ -148,7 +148,7 @@ app.post('/api/users', mongoChecker, async (req, res) => {
 
     try {
         const user_query = req.body.username
-        const same_user = await User1.find({username: user_query})
+        const same_user = await User.find({username: user_query})
         // Means username is taken already
         if (same_user.length > 0) {
             res.send("Username is taken already");
@@ -173,7 +173,7 @@ app.get('/api/users', mongoChecker, async (req, res) => {
 
     // Get the students
     try {
-        const users = await User1.find()
+        const users = await User.find()
         res.send(users) // can wrap students in object if want to add more properties
     } catch(error) {
         log(error)
@@ -187,7 +187,7 @@ app.get('/api/users/:username', mongoChecker, async (req, res) => {
     const user_query = req.params.username
 
     try {
-        const user = await User1.findOne({username: user_query})
+        const user = await User.findOne({username: user_query})
         if (!user) {
             res.status(404).send('User not found') 
         } else {
@@ -214,7 +214,7 @@ app.post('/api/users/:username', mongoChecker, async (req, res) => {
 
   
     try {
-        const user = await User1.findOneAndUpdate({username: user_query}, {$set: {fullname: new_name, about: new_about, institution: new_inst, skills: new_skills}}, {new: true, useFindAndModify: false})
+        const user = await User.findOneAndUpdate({username: user_query}, {$set: {fullname: new_name, about: new_about, institution: new_inst, skills: new_skills}}, {new: true, useFindAndModify: false})
         if (!user) {
             res.status(404).send('User not found') 
         } else {
@@ -228,14 +228,15 @@ app.post('/api/users/:username', mongoChecker, async (req, res) => {
 })
 
 // Create a post
-app.post('/api/posts', mongoChecker, authenticate, async (req, res) => {
+app.post('/api/posts', mongoChecker, async (req, res) => {
 
-    const post = new Post1({
+    const post = new Post({
     author: req.body.author,
     title: req.body.title,
     description: req.body.description,
     institution: req.body.institution,
-    skillsRequired: req.body.skillsRequired
+    skillsRequired: req.body.skillsRequired,
+        applications: []
     })
 
     try {
@@ -252,12 +253,35 @@ app.post('/api/posts', mongoChecker, authenticate, async (req, res) => {
 
 })
 
+// Add an application to a post with this ID
+app.post('/api/posts/:id/apply', mongoChecker, async (req, res) => {
+
+    let application = {
+        username: req.body.username,
+        message: req.body.message
+    }
+
+    try {
+        const post = await Post.findOneAndUpdate({_id: req.params.id}, {$push: {applications: application}}, {new: true, useFindAndModify: false});
+        if (post) {
+            res.send(post)
+        } else {
+            res.status(404).send("Post not found")
+        }
+
+    } catch(error) {
+        log(error)
+        res.status(500).send("Internal Server Error")
+    }
+})
+
+
 
 // Get all posts
 app.get('/api/posts', mongoChecker, async (req, res) => {
 
     try {
-        const posts = await Post1.find()
+        const posts = await Post.find()
         res.send({ posts })
     } catch(error) {
         log(error)
@@ -270,7 +294,7 @@ app.get('/api/posts', mongoChecker, async (req, res) => {
 app.get('/api/posts/:id', mongoChecker, idChecker, async (req, res) => {
 
     try {
-        const post = await Post1.findById(req.params.id)
+        const post = await Post.findById(req.params.id)
         if (post) {
             res.send(post)
         } else {
@@ -288,7 +312,7 @@ app.get('/api/posts/:id', mongoChecker, idChecker, async (req, res) => {
 app.delete('/api/posts/:id', mongoChecker, idChecker, async (req, res) => {
 
     try {
-        const post = await Post1.findByIdAndRemove(req.params.id)
+        const post = await Post.findByIdAndRemove(req.params.id)
         if (!post) {
             res.status(404).send("Post not found")
         } else {
@@ -310,7 +334,7 @@ app.get('/api/posts/user/:username', mongoChecker, async (req, res) => {
     const user = req.params.username
 
     try {
-        const posts = await Post1.find({author: user})
+        const posts = await Post.find({author: user})
         if (!posts) {
             res.status(404).send('User not found') 
         } else {

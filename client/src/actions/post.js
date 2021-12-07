@@ -123,3 +123,24 @@ export const getUserPosts = (username) => {
         });
 
 }
+
+export const applyToPost = (username, message, id) => {
+    const request = new Request(`/api/posts/${id}/apply`, {
+        method: "post",
+        body: JSON.stringify({username, message}),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}

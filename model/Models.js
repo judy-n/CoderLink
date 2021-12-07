@@ -16,7 +16,8 @@ const PostSchema = new mongoose.Schema({
     title: String,
     description: String,
     institution: String,
-    skillsRequired: Array
+    skillsRequired: Array,
+	applications: Array
 })
 
 // A static method on the document model.
@@ -42,8 +43,8 @@ UserSchema.statics.findByUsernamePassword = function(username, password) {
 		})
 }
 
-const User1 = mongoose.model('User1', UserSchema);
-const Post1 = mongoose.model('Post1', PostSchema);
+const User = mongoose.model('User', UserSchema);
+const Post = mongoose.model('Post', PostSchema);
 
 
-module.exports = { User1, Post1 };
+module.exports = { User, Post };
