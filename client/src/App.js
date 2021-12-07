@@ -133,14 +133,22 @@ class App extends React.Component {
         <Route exact path='/post' render={() => 
                             (<PostPage
                               currentPost={this.state.currentPost}
+                              currentUser={this.state.currentUser}
+                              currentUsername={this.state.currentUser.username}
                               handleLogout = {this.handleLogout}
                               loggedIn={this.state.loggedIn}
+                              isAdmin={this.state.isAdmin}
                             />)}/>
 
         <Route exact path='/post/:id' render={ (props) => 
                             (<PostPage 
                               {...props}
                               loggedIn={this.state.loggedIn}
+                              currentUser={this.state.currentUser}
+                              currentUsername={this.state.currentUser.username}
+                              handleLogout = {this.handleLogout}
+                              isAdmin={this.state.isAdmin}
+                              removePost={this.deletePost}
                             />) } /> 
 
         

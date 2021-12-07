@@ -35,3 +35,18 @@
 .postpage-tags {
   margin: 2rem;
 }
+
+.postpage-container .del-btn {
+  color: darkgray;
+  border-color: darkgray;
+}
+
+.postpage-container .del-btn:hover {
+  border-color: darkgray;
+}
+
+.postpage-container .action-buttons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+}

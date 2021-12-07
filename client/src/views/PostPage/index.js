@@ -13,10 +13,12 @@ class PostPage extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleDelete = this.handleDelete.bind(this);
     
     
     this.state = {
-        currentPost: null
+        currentPost: null,
+        isMyPost: false
     }
 }
 
@@ -25,9 +27,24 @@ async componentDidMount() {
     console.log(post)
     if (post) {
         this.setState({currentPost: post})
+        if (post.author === this.props.currentUser.username) {
+            this.setState({isMyPost: true})
+        }
     }
 }
 
+componentDidUpdate(prevProps) {
+        if (prevProps.currentUser !== this.props.currentUser) {
+            if (this.state.currentPost.author === this.props.currentUser.username) {
+                this.setState({isMyPost: true})
+            }
+        }
+}
+
+handleDelete() {
+        this.props.removePost(this.state.currentPost._id)
+        window.location.href = "/home"
+}
 
     render() { 
         return (
@@ -46,11 +63,25 @@ async componentDidMount() {
                     <div className="postpage-desc">
                         {(this.state.currentPost && this.state.currentPost.description) || ''}
                     </div>
+                    <div className={"action-buttons"}>
+
                     <Button
                     variant='contained'>
                         Apply
 
                     </Button>
+
+
+                        {(this.props.isAdmin || this.state.isMyPost) && (
+                            <Button
+                                className="del-btn"
+                                variant='outlined'
+                                onClick = {this.handleDelete}>
+                                Delete
+                            </Button>
+                        )
+                        }
+                    </div>
                 </div>
 
                 <div className="postpage-tags">
