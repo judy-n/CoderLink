@@ -4,7 +4,11 @@ import './style.css';
 import Header from '../../components/Header';
 import Button from '@mui/material/Button';
 import pixel from './static/pixel.png'
-import { getPostById } from '../../actions/post'
+import Modal from '@mui/material/Modal';
+import TextField from "@mui/material/TextField";
+import { Link } from 'react-router-dom';
+
+import { getPostById, applyToPost } from '../../actions/post'
 
 
 
@@ -14,13 +18,28 @@ class PostPage extends React.Component {
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
+        this.applyToPost = this.applyToPost.bind(this)
+        this.handleOpen = this.handleOpen.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     
     
     this.state = {
         currentPost: null,
-        isMyPost: false
+        isMyPost: false,
+        open: false,
+
     }
 }
+    // For Apply Modal
+    handleOpen() {
+        this.setState({open: true})
+    }
+
+    // For Apply Modal
+    handleClose() {
+        this.setState({open: false})
+    }
+
 
 async componentDidMount() {
     const post = await getPostById(this.props.match.params.id)
@@ -46,6 +65,10 @@ handleDelete() {
         window.location.href = "/home"
 }
 
+async applyToPost () {
+    await applyToPost(this.props.currentUser.username, "can I join", this.state.currentPost._id)
+}
+
     render() { 
         return (
         <div className="postpage-container">
@@ -66,12 +89,11 @@ handleDelete() {
                     <div className={"action-buttons"}>
 
                     <Button
-                    variant='contained'>
+                    variant='contained'
+                    onClick={(this.props.currentUsername) ? this.handleOpen :((e) => {e.preventDefault(); window.location.href="/login"})}
+                    >
                         Apply
-
                     </Button>
-
-
                         {(this.props.isAdmin || this.state.isMyPost) && (
                             <Button
                                 className="del-btn"
@@ -82,6 +104,34 @@ handleDelete() {
                         )
                         }
                     </div>
+                    <Modal
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <div className="applyModal">
+
+                            <h2>Apply to <span>{`${(this.state.currentPost && this.state.currentPost.title) || ''}`}</span></h2>
+                            <hr/>
+                            <p>Make sure to include some contact info so the creator can reach out to you. </p>
+                            <TextField
+                                className="applyField"
+                                multiline
+                                rows={6}
+                                helperText="Explain why you'd be good for this project!"
+                                id="demo-helper-text-aligned"
+                                label="Message"
+                            />
+                            <Button
+                                className="submitBtn"
+                                variant="contained"
+                            >
+                                Submit
+                            </Button>
+
+                        </div>
+                    </Modal>
                 </div>
 
                 <div className="postpage-tags">

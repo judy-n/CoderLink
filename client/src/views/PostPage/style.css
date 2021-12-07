@@ -50,3 +50,45 @@
   flex-direction: row;
   column-gap: 1rem;
 }
+
+.applyModal {
+  width: 80%;
+  display: grid;
+  place-items: center;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin: 5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.applyModal h2 {
+  color: #194e77;
+  font-family: "DM Sans", sans-serif;
+  padding-bottom: 1rem;
+  font-weight: 400;
+}
+
+.applyModal hr {
+  width: 8rem;
+  border: 0;
+  height: 3px;
+  background: #34a0a4;
+  margin-bottom: 2rem;
+}
+
+.applyModal h2 span {
+  font-weight: 700;
+}
+
+.applyModal p {
+  margin-bottom: 2rem;
+}
+
+.applyField {
+  width: 30rem;
+}
+
+.submitBtn {
+  background-color: #34a0a4 !important;
+}
