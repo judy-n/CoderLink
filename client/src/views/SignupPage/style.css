@@ -4,18 +4,31 @@
 }
 
 .signup-page-container h2 {
-    color: #4b4b4b;
+    color: #194e77;
+    font-family: "DM Sans", sans-serif;
+    padding-bottom: 1rem;
     margin-top: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signup-page-container hr {
+    width: 8rem;
+    border: 0;
+    height: 3px;
+    background: #34a0a4;
+    margin-bottom: 2rem;
+}
+
+.fail-alert {
+    width: 80%;
 }
 
 .signup-form {
+    background-color: white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     display: flex;
     flex-direction: column;
     margin: 1rem;
     width: 25vw;
-    background-color: rgb(242, 242, 242);
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     padding: 2rem;
     border-radius: 10px;
 }

@@ -163,6 +163,8 @@ class App extends React.Component {
             () => (
               <SignupPage 
                 handleSignup={this.handleSignup}
+                handleLogout={this.handleLogout}
+                loggedIn={this.state.loggedIn}
               />
             )
           }
