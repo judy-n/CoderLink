@@ -172,10 +172,12 @@ async applyToPost () {
                         <List className="listEl">
                             {(this.props.isAdmin || this.state.isMyPost) && (this.state.currentPost.applications || []).map((a) =>
                                 <ListItem className="appListItem">
+                                    <Link to={`/profile/${a.username}`} target="_blank" style={{ color: 'inherit', textDecoration: 'none' }}>
                                     <ListItemButton>
                                         <ListItemText primary={a.username}
                                                       secondary={a.message}/>
                                     </ListItemButton>
+                                    </Link>
                                 </ListItem>
                             )
                             }
