@@ -92,3 +92,8 @@
 .submitBtn {
   background-color: #34a0a4 !important;
 }
+
+.apply-alert {
+  margin-top: 2rem;
+  width: 50%;
+}

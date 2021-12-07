@@ -9,6 +9,8 @@ import TextField from "@mui/material/TextField";
 import { Link } from 'react-router-dom';
 
 import { getPostById, applyToPost } from '../../actions/post'
+import AlertTitle from "@mui/material/AlertTitle";
+import Alert from "@mui/material/Alert";
 
 
 
@@ -27,6 +29,8 @@ class PostPage extends React.Component {
         currentPost: null,
         isMyPost: false,
         open: false,
+        message: null,
+        applied: false,
 
     }
 }
@@ -38,6 +42,7 @@ class PostPage extends React.Component {
     // For Apply Modal
     handleClose() {
         this.setState({open: false})
+        this.setState({applied: false})
     }
 
 
@@ -66,7 +71,10 @@ handleDelete() {
 }
 
 async applyToPost () {
-    await applyToPost(this.props.currentUser.username, "can I join", this.state.currentPost._id)
+    await applyToPost(this.props.currentUser.username, this.state.message, this.state.currentPost._id)
+    this.setState({applied: true})
+    this.setState({message: ''})
+
 }
 
     render() { 
@@ -122,13 +130,22 @@ async applyToPost () {
                                 helperText="Explain why you'd be good for this project!"
                                 id="demo-helper-text-aligned"
                                 label="Message"
+                                value={this.state.message}
+                                onChange={(e) => {this.setState({message: e.target.value})}}
                             />
                             <Button
                                 className="submitBtn"
                                 variant="contained"
+                                onClick={this.applyToPost}
                             >
                                 Submit
                             </Button>
+                            {this.state.applied &&
+                                (<Alert severity="success" className={"apply-alert"}>
+                                    <AlertTitle>Success</AlertTitle>
+                                    Application sent!
+                                </Alert>)
+                            }
 
                         </div>
                     </Modal>
