@@ -64,10 +64,14 @@ async componentDidMount() {
     }
 }
 
-componentDidUpdate(prevProps) {
-        if (prevProps.currentUser !== this.props.currentUser) {
-            if (this.state.currentPost.author === this.props.currentUser.username || this.props.isAdmin) {
-                this.setState({isMyPost: true})
+async componentDidUpdate(prevProps) {
+        if (prevProps.match.params.id !== this.props.match.params.id) {
+            const post = await getPostById(this.props.match.params.id)
+            if (post) {
+                this.setState({currentPost: post})
+                if (post.author === this.props.currentUser.username || this.props.isAdmin) {
+                    this.setState({isMyPost: true})
+                }
             }
         }
 }
