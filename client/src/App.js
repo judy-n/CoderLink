@@ -37,6 +37,8 @@ class App extends React.Component {
         skills: null,
         institution: null,
         userType: null,
+          github: null,
+          linkedin: null
       },
       loggedIn: false,
       currentPost: null
@@ -56,6 +58,8 @@ class App extends React.Component {
         skills: user.skills,
         institution: user.institution,
         userType: user.userType,
+          github: user.github,
+          linkedin: user.linkedin
       },
       loggedIn: user !== undefined
     })
@@ -84,8 +88,8 @@ class App extends React.Component {
       await getUser(username)
   }
 
-  async handleSignup(username, password, fullname, about, skills, institution) {
-    const user = await signup(username, password, fullname, about, skills, institution)
+  async handleSignup(username, password, fullname, about, skills, institution, github, linkedin) {
+    const user = await signup(username, password, fullname, about, skills, institution, github, linkedin)
   }
 
   async addPost(author, title, description, institution, skillsRequired) {
@@ -97,8 +101,8 @@ class App extends React.Component {
   }
 
   
-  async editProfile(username, new_name, new_bio, new_inst, new_skills) {
-    const user = await editUser(username, new_name, new_bio, new_inst, new_skills)
+  async editProfile(username, new_name, new_bio, new_inst, new_skills, new_github, new_linkedin) {
+    const user = await editUser(username, new_name, new_bio, new_inst, new_skills, new_github, new_linkedin)
     this.setState({currentUser: user})
   }
 

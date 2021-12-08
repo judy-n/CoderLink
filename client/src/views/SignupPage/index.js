@@ -21,6 +21,8 @@ class SignupPage extends React.Component {
         about: '',
         institution: '',
         skills: '',
+        github: '',
+        linkedin: '',
         valid: true
     }
 
@@ -28,7 +30,7 @@ class SignupPage extends React.Component {
         e.preventDefault()
         if (!this.state.username == '' && !this.state.password == '' && !this.state.fullname == '' && !this.state.institution=='') {
             this.props.handleSignup(this.state.username, this.state.password, this.state.fullname, this.state.about,
-                this.state.skills, this.state.institution);
+                this.state.skills, this.state.institution, this.state.github, this.state.linkedin);
             window.location.href= "/login"
         } else {
             this.setState({valid: false})
@@ -91,6 +93,17 @@ class SignupPage extends React.Component {
                         label="Skills"
                         onChange={(e) => this.setState({skills: e.target.value})}
                         helperText='Separate with ", "'
+                    />
+                    <TextField
+                        variant="outlined"
+                        label="GitHub URL"
+                        onChange={(e) => this.setState({github: e.target.value})}
+                    />
+
+                    <TextField
+                        variant="outlined"
+                        label="LinkedIn URL"
+                        onChange={(e) => this.setState({linkedin: e.target.value})}
                     />
 
                             <Button

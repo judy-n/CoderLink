@@ -9,6 +9,8 @@ import pixel from './static/pixel.png'
 import coffee from './static/coffee.jpg'
 import IconButton from '@mui/material/IconButton'
 import SettingsIcon from '@mui/icons-material/Settings';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Link } from 'react-router-dom';
 
 import { getUserPosts } from '../../actions/post';
@@ -71,7 +73,25 @@ async componentDidMount() {
                 <h3>Skills: {(this.state.currentUser && this.state.currentUser.skills || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}</h3>
                 <div className="about-buttons-profile">
                     <div>
-                  <Button href="portfolio" variant="contained" className="about-btn green">Portfolio</Button>
+
+                        {/*Show GitHub button if user has it in their profile*/}
+                        {(this.state.currentUser && this.state.currentUser.github !== '') && (
+                            <Link to={{ pathname: this.state.currentUser.github }} target="_blank">
+                            <IconButton>
+                                <GitHubIcon/>
+                            </IconButton>
+                            </Link>
+                        )}
+
+                        {/*Show LinkedIn button if user has it in their profile*/}
+                        {(this.state.currentUser && this.state.currentUser.linkedin !== '') && (
+                            <Link to={{pathname: this.state.currentUser.linkedin}} target="_blank">
+                        <IconButton>
+                            <LinkedInIcon/>
+                        </IconButton>
+                            </Link>
+                        )}
+
                     </div>
                     {this.state.isMyProfile && (
                         <div>

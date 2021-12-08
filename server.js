@@ -143,7 +143,9 @@ app.post('/api/users', mongoChecker, async (req, res) => {
         about: req.body.about,
         skills: req.body.skills.split(","),
         institution: req.body.institution,
-        userType: "user"
+        userType: "user",
+        github: req.body.github,
+        linkedin: req.body.linkedin
     })
 
     try {
@@ -210,11 +212,13 @@ app.post('/api/users/:username', mongoChecker, async (req, res) => {
     const new_about = req.body.about
     const new_inst = req.body.institution
     const new_skills = req.body.skills
+    const new_github = req.body.github
+    const new_linkedin = req.body.linkedin
 
 
   
     try {
-        const user = await User.findOneAndUpdate({username: user_query}, {$set: {fullname: new_name, about: new_about, institution: new_inst, skills: new_skills}}, {new: true, useFindAndModify: false})
+        const user = await User.findOneAndUpdate({username: user_query}, {$set: {fullname: new_name, about: new_about, institution: new_inst, skills: new_skills, github: new_github, linkedin: new_linkedin}}, {new: true, useFindAndModify: false})
         if (!user) {
             res.status(404).send('User not found') 
         } else {

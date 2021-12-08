@@ -20,6 +20,8 @@ class EditProfile extends React.Component {
             about: this.props.currentUser.about,
             institution: this.props.currentUser.institution,
             skills: this.props.currentUser.skills,
+            github: this.props.currentUser.github,
+            linkedin: this.props.currentUser.linkedin,
             saved: false
         }
 
@@ -34,6 +36,8 @@ class EditProfile extends React.Component {
                 about: this.props.currentUser.about,
                 institution: this.props.currentUser.institution,
                 skills: this.props.currentUser.skills,
+                github: this.props.currentUser.github,
+                linkedin: this.props.currentUser.linkedin
                 })
         }
     }
@@ -46,7 +50,7 @@ class EditProfile extends React.Component {
         console.log("editprofile passes in:", this.state.username, this.state.name, this.state.about, 
         this.state.skills, this.state.institution)
         await this.props.editProfile(this.state.username, this.state.name, this.state.about, 
-            this.state.skills, this.state.institution)
+            this.state.skills, this.state.institution, this.state.github, this.state.linkedin)
         // Success -> Show the alert
         this.setState({saved: true})
     }
@@ -110,9 +114,26 @@ class EditProfile extends React.Component {
             defaultValue={this.state.skills}
             helperText="Comma seperated"
             onChange={(e) => this.setState({skills: e.target.value.split(",")})}
-            />  
+            />
 
-            <Button
+            <TextField
+                    id="outlined-helperText"
+                    label="GitHub URL"
+                    defaultValue={this.state.github}
+                    onChange={(e) => this.setState({github: e.target.value})}
+            />
+
+
+
+                <TextField
+                    id="outlined-helperText"
+                    label="LinkedIn URL"
+                    defaultValue={this.state.linkedin}
+                    onChange={(e) => this.setState({linkedin: e.target.value})}
+                />
+
+
+                <Button
             variant='contained'
             type='submit'
             onClick={this.handleSubmit.bind(this)}

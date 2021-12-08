@@ -8,7 +8,9 @@ const UserSchema = new mongoose.Schema({
     about: String,
     skills: Array,
     institution: String,
-    userType: String
+    userType: String,
+	github: String,
+	linkedin: String
 });
 
 const PostSchema = new mongoose.Schema({

@@ -74,11 +74,11 @@ export const logout = (app) => {
         });
 };
 
-export const signup = (username, password, fullname, about, skills, institution) => {
+export const signup = (username, password, fullname, about, skills, institution, github, linkedin) => {
 
     const request = new Request(`/api/users`, {
         method: "post",
-        body: JSON.stringify({username, password, fullname, about, skills, institution}),
+        body: JSON.stringify({username, password, fullname, about, skills, institution, github, linkedin}),
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"
@@ -124,10 +124,10 @@ export const getUser = (username) => {
         });
 }
 
-export const editUser = (username, fullname, about, skills, institution) => {
+export const editUser = (username, fullname, about, skills, institution, github, linkedin) => {
     const request = new Request(`http://localhost:5001/api/users/${username}`, {
         method: "post",
-        body: JSON.stringify({fullname, about, skills, institution}),
+        body: JSON.stringify({fullname, about, skills, institution, github, linkedin}),
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"
