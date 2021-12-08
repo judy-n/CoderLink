@@ -121,3 +121,12 @@
 .close-modal {
   justify-self: flex-end;
 }
+
+.appListText {
+  width: 20rem;
+}
+
+.userTag {
+  font-weight: 700;
+  color: #194e77 !important;
+}

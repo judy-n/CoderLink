@@ -96,7 +96,8 @@ async applyToPost () {
             <div className="postpage-post">
                 <div className="postpage-postcontent">
 
-                    <div className="postpage-author">@{(this.state.currentPost && this.state.currentPost.author) || ''} - {(this.state.currentPost && this.state.currentPost.institution) || ''}</div>
+                    <div className="postpage-author"><Link className="userTag" style={{textDecoration: 'none', color:'inherit'}}
+                                                      to={(this.state.currentPost) && `/profile/${this.state.currentPost.author}`}>@{(this.state.currentPost && this.state.currentPost.author) || ''}</Link> - {(this.state.currentPost && this.state.currentPost.institution) || ''}</div>
                     <h2>{(this.state.currentPost && this.state.currentPost.title) || ''}</h2>
                     <img src={pixel}></img>
                     <div className="postpage-desc">
@@ -174,7 +175,8 @@ async applyToPost () {
                                 <ListItem className="appListItem">
                                     <Link to={`/profile/${a.username}`} target="_blank" style={{ color: 'inherit', textDecoration: 'none' }}>
                                     <ListItemButton>
-                                        <ListItemText primary={a.username}
+                                        <ListItemText className="appListText"
+                                            primary={a.username}
                                                       secondary={a.message}/>
                                     </ListItemButton>
                                     </Link>
