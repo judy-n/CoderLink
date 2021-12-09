@@ -69,6 +69,7 @@ async componentDidUpdate(prevProps) {
             const post = await getPostById(this.props.match.params.id)
             if (post) {
                 this.setState({currentPost: post})
+                console.log("author", post.author, "curr user", this.props.currentUser.username)
                 if (post.author === this.props.currentUser.username || this.props.isAdmin) {
                     this.setState({isMyPost: true})
                 }
@@ -140,6 +141,12 @@ async applyToPost () {
                             <h2>Apply to <span>{`${(this.state.currentPost && this.state.currentPost.title) || ''}`}</span></h2>
                             <hr/>
                             <p>Make sure to include some contact info so the creator can reach out to you. </p>
+                            {this.state.applied &&
+                                (<Alert severity="success" className={"apply-alert"}>
+                                    <AlertTitle>Success</AlertTitle>
+                                    Application sent!
+                                </Alert>)
+                            }
                             <TextField
                                 className="applyField"
                                 multiline
@@ -157,12 +164,6 @@ async applyToPost () {
                             >
                                 Submit
                             </Button>
-                            {this.state.applied &&
-                                (<Alert severity="success" className={"apply-alert"}>
-                                    <AlertTitle>Success</AlertTitle>
-                                    Application sent!
-                                </Alert>)
-                            }
 
                         </div>
                     </Modal>

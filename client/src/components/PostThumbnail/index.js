@@ -31,11 +31,11 @@ class PostThumbnail extends React.Component {
 
         // Truncate description 
         let desc;
-        if (this.props.description.length <= 125){
+        if (this.props.description.length <= 100){
             desc=this.props.description
         }
         else {
-            desc=(this.props.description).substring(0, 125) + "...";
+            desc=(this.props.description).substring(0, 100) + "...";
         }
 
         return (<div className="PostThumbnail">
@@ -56,7 +56,7 @@ class PostThumbnail extends React.Component {
         <CardActions className="card-actions">
         <h2>{this.state.skills.map((skill, i) => <span className="thumbBadge" key={i}>{skill}</span>)}</h2>
 
-            <Link to={`/post/${this.props.id}`} target="_blank">
+            <Link to={`/post/${this.props.id}`}>
              <IconButton>
             <OpenInNewIcon/>
              </IconButton>
