@@ -114,7 +114,7 @@ async componentDidMount() {
             {(this.state.userPosts.slice(0).reverse() || []).map((post) => {
               return (
               <PostThumbnail
-                  id={post._id}
+              id={post._id}
               username={post.author}
               projectTitle={post.title}
               description={post.description}

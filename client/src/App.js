@@ -46,7 +46,7 @@ class App extends React.Component {
   }
 
 
-  async componentDidMount() {
+    async componentDidMount() {
     const username = await checkSession(this); // sees if a user is logged in
     console.log("APP.js passing in", username)
     const user = await getUser(username)

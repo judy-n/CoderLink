@@ -173,10 +173,9 @@ app.post('/api/users', mongoChecker, async (req, res) => {
 // Get all Users
 app.get('/api/users', mongoChecker, async (req, res) => {
 
-    // Get the students
     try {
         const users = await User.find()
-        res.send(users) // can wrap students in object if want to add more properties
+        res.send(users)
     } catch(error) {
         log(error)
         res.status(500).send("Internal Server Error")
@@ -205,7 +204,6 @@ app.get('/api/users/:username', mongoChecker, async (req, res) => {
 // Update info of User with this username
 app.post('/api/users/:username', mongoChecker, async (req, res) => {
 
-    console.log("req body in server.js:", req.body)
 
     const user_query = req.params.username
     const new_name = req.body.fullname
