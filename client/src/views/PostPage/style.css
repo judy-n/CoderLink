@@ -27,6 +27,7 @@
   display: flex;
   column-gap: 1rem;
   align-items: center;
+  max-width: 40rem;
 }
 
 .desc-vl{
