@@ -1,10 +1,10 @@
 # team34
 
-#CoderLink
+# CoderLink
 #### CoderLink helps students find teammates to work on side projects with.
 Check it out here! -> https://coderlink.herokuapp.com/
 
-###Credentials
+### Credentials
 Standard User
 - username: user
 - password: user
@@ -15,7 +15,7 @@ Admin User
 
 And others users can easily be added in the sign up page.
 
-###Features
+### Features
 - A user simply makes a post about a project idea as well as the required skills, and other users can apply to join it. 
   - A user can create a post in the home page using the "Create Post" button.
   - Other users would view the post in the home page, click on "View More" and apply using the "Apply" button.
@@ -27,10 +27,10 @@ And others users can easily be added in the sign up page.
 - Each user's profile contains some info, as well as their recent posts. They can edit their information by clicking the Settings icon.
 - Posts can be deleted by their author and by admin users (either from the Home page or from inside the post).
 
-###Admin Features
+### Admin Features
 - Admins have the same features as normal users, except that they can delete posts and view applications for any post.
 
-##Routes
+## Routes
 
 Our backend uses various routes for Post and User objects.
 
