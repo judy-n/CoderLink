@@ -18,6 +18,7 @@ import AlertTitle from "@mui/material/AlertTitle";
 import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from '@mui/icons-material/Close';
+import SchoolIcon from '@mui/icons-material/School';
 
 
 
@@ -99,23 +100,40 @@ async applyToPost () {
             />
 
             <div className="postpage-post">
-                <div className="postpage-postcontent">
+                <div className="leftside-cont">
+                    <div className="postTitle-cont">
+                        <h2>{(this.state.currentPost && this.state.currentPost.title) || ''}</h2>
+                        <div className="postpage-author">
+                            <Link className="userTag" style={{textDecoration: 'none', color:'inherit'}}
+                                                               to={(this.state.currentPost) && `/profile/${this.state.currentPost.author}`}>@{(this.state.currentPost && this.state.currentPost.author) || ''}</Link>
+                           <div className="institution">
+                               <SchoolIcon
+                                   style={{color: 'grey'}}
+                               />
+                               {(this.state.currentPost && this.state.currentPost.institution) || ''}
+                           </div>
+                        </div>
+                    </div>
 
-                    <div className="postpage-author"><Link className="userTag" style={{textDecoration: 'none', color:'inherit'}}
-                                                      to={(this.state.currentPost) && `/profile/${this.state.currentPost.author}`}>@{(this.state.currentPost && this.state.currentPost.author) || ''}</Link> - {(this.state.currentPost && this.state.currentPost.institution) || ''}</div>
-                    <h2>{(this.state.currentPost && this.state.currentPost.title) || ''}</h2>
+                <div className="postpage-postcontent">
                     <img src={pixel}></img>
+                </div>
+
                     <div className="postpage-desc">
+                        <div className="desc-vl">
+                        </div>
                         {(this.state.currentPost && this.state.currentPost.description) || ''}
                     </div>
                     <div className={"action-buttons"}>
 
-                    <Button
-                    variant='contained'
-                    onClick={(this.props.currentUsername) ? this.handleOpen :((e) => {e.preventDefault(); window.location.href="/login"})}
-                    >
-                        Apply
-                    </Button>
+                        <Button
+                            variant='contained'
+                            className="applyButton"
+                            onClick={(this.props.currentUsername) ? this.handleOpen :((e) => {e.preventDefault(); window.location.href="/login"})}
+                        >
+                            Apply
+                        </Button>
+
                         {(this.props.isAdmin || this.state.isMyPost) && (
                             <Button
                                 className="del-btn"
@@ -169,6 +187,9 @@ async applyToPost () {
                     </Modal>
                 </div>
 
+                <div className="vl">
+
+                </div>
                 <div className="postpage-tags">
                     <h2>Skills required</h2>
                 {((this.state.currentPost && this.state.currentPost.skillsRequired) || []).map((skill, i) => <span className="ProfileBadge" key={i}>{skill}</span>)}
@@ -176,7 +197,7 @@ async applyToPost () {
 
                     <div className="appList">
                         <List className="listEl">
-                            {(this.props.isAdmin || this.state.isMyPost) && (this.state.currentPost.applications || []).map((a) =>
+                            {(this.state.currentPost) && (this.props.isAdmin || this.state.isMyPost) && (this.state.currentPost.applications || []).map((a) =>
                                 <ListItem className="appListItem">
                                     <Link to={`/profile/${a.username}`} style={{ color: 'inherit', textDecoration: 'none', maxWidth: '20rem' }}>
                                     <ListItemButton>
